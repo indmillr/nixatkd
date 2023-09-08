@@ -128,7 +128,6 @@ export default function About() {
           >
             American Martial Arts Alliance
           </a>
-          .
         </p>
       </div>
       <div className="flex items-center justify-between w-full">
