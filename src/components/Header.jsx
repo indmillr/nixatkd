@@ -45,7 +45,7 @@ export default function Header() {
   const pathname = router.pathname;
 
   return (
-    <div className="flex shadow-lg rounded-b-full shadow-gray-500 justify-center max-w-6xl sm:mx-auto items-center py-4">
+    <div className="flex shadow-lg translate-all duration-1000 rounded-b-full shadow-gray-500 justify-center max-w-6xl sm:mx-auto items-center py-4">
       <div className="flex cursor-pointer space-x-6 md:space-x-8 lg:space-x-10 text-xl md:text-2xl lg:text-3xl">
         {navData.map((link, index) => {
           return (
