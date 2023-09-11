@@ -12,7 +12,7 @@ export default function Logo() {
         <Link href="/">
           <Image
             className="cursor-pointer"
-            src={"/NTALOGO.png"}
+            src={"/../NTALOGO.png"}
             width={100}
             height={75}
           ></Image>
