@@ -21,6 +21,14 @@ const newsSlides = {
           title: "title",
           path: "/thumb4.jpg",
         },
+        {
+          title: "title",
+          path: "/thumb2.jpg",
+        },
+        {
+          title: "title",
+          path: "/thumb3.jpg",
+        },
       ],
     },
     {
@@ -68,7 +76,7 @@ const NewsSlider = () => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className="h-[400px]"
+      className="h-[375px]"
     >
       {newsSlides.slides.map((slide, index) => {
         return (
