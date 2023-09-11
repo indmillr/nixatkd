@@ -1,10 +1,10 @@
 import React from "react";
 
 // IMAGE
+import Logo from "./NTALOGO.png";
 import Image from "next/image";
 import DarkModeSwitch from "./DarkModeSwitch";
 import Link from "next/link";
-import Logo from "./NTALOGO.png";
 
 export default function Logo() {
   return (
