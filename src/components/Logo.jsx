@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import DarkModeSwitch from "./DarkModeSwitch";
 import Link from "next/link";
-import NTALOGO from "/public/NTALOGO.png";
 
 export default function Logo() {
   return (
@@ -13,7 +12,7 @@ export default function Logo() {
         <Link href="/">
           <Image
             className="cursor-pointer"
-            src={NTALOGO}
+            src="/NTALOGO.png"
             width={100}
             height={75}
           ></Image>
