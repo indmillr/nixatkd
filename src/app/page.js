@@ -18,12 +18,12 @@ export default function Home() {
           specialize in TaeKwon-Do and Tactical Self-Defense for individuals of
           all ages.
         </p>
-        <p className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-8 xl:mb-14">
+        <p className="shadow-lg shadow-gray-500 rounded-xl px-3 py-3 max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-8 xl:mb-14">
           <span className="text-blue-600 font-semibold dark:text-red-600">
             Chief Instructor and Owner
           </span>
           <br />
-          Bill Taylor, 4th Degree Black Belt
+          Bill Taylor, 4<sup>th</sup> Degree Black Belt
         </p>
         <div className="justify-center relative flex items-center">
           <Image
