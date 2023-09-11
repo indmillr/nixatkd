@@ -76,7 +76,7 @@ const NewsSlider = () => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className="h-[375px]"
+      className="h-[400px]"
     >
       {newsSlides.slides.map((slide, index) => {
         return (
