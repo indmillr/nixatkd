@@ -22,3 +22,18 @@ html {
 .swiper-rtl .swiper-button-prev:after {
   color: #dc2626;
 }
+
+.btn,
+.input {
+  @apply h-[52px];
+}
+.input {
+  @apply w-full h-[52px] rounded-lg pl-6;
+}
+.input,
+.textarea {
+  @apply bg-transparent outline-none focus:ring-1 focus:ring-blue-600 border border-black dark:border-white placeholder:text-black dark:placeholder:text-gray-500 placeholder:font-light;
+}
+.textarea {
+  @apply w-full h-[150px] p-6 rounded-lg resize-none;
+}

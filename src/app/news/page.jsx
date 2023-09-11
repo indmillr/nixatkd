@@ -11,7 +11,7 @@ export default function News() {
             <h1 className="text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-6 font-semibold">
               NTA <span className="text-red-600 dark:text-blue-600">News</span>.
             </h1>
-            <p className="mb-4 mx-auto">For now, no news is good news.</p>
+            <p className="mb-4 mx-auto">No news, for now.</p>
           </div>
 
           {/* slider */}
