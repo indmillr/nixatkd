@@ -21,14 +21,6 @@ const newsSlides = {
           title: "title",
           path: "/thumb4.jpg",
         },
-        {
-          title: "title",
-          path: "/thumb4.jpg",
-        },
-        {
-          title: "title",
-          path: "/thumb4.jpg",
-        },
       ],
     },
     {

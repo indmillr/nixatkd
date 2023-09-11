@@ -20,8 +20,6 @@ export default function RootLayout({ children }) {
         <Providers>
           <Logo />
           <Header />
-          {/* SEARCH */}
-
           {children}
         </Providers>
       </body>
