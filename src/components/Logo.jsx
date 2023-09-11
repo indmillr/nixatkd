@@ -16,6 +16,7 @@ export default function Logo() {
             width={100}
             height={75}
           ></Image>
+          <img src="/NTALOGO.png" alt="" width={100} />
         </Link>
         <div className="-ml-2 mt-1 text-left uppercase font-light  tracking-widest text-xs">
           <p>Nixa TaeKwon-Do</p>
