@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
 
+import React from "react";
+import NTALogo from "/public/NTALOGO.png";
 // IMAGE
-import Logo from "./NTALOGO.png";
+
 import Image from "next/image";
 import DarkModeSwitch from "./DarkModeSwitch";
 import Link from "next/link";
@@ -13,7 +15,7 @@ export default function Logo() {
         <Link href="/">
           <Image
             className="cursor-pointer"
-            src={Logo}
+            src={NTALogo}
             width={100}
             height={75}
           ></Image>
