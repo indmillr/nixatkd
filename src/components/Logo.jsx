@@ -5,7 +5,7 @@ import Image from "next/image";
 import DarkModeSwitch from "./DarkModeSwitch";
 import Link from "next/link";
 
-import NTALOGO from "../../public/NTALOGO.png";
+import NTALOGO from "/NTALOGO.png";
 
 export default function Logo() {
   return (
