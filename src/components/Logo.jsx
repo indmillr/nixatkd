@@ -1,5 +1,4 @@
 import React from "react";
-import NTALogo from "/public/NTALOGO.png";
 // IMAGE
 
 import Image from "next/image";
@@ -16,6 +15,7 @@ export default function Logo() {
             src="/NTALOGO.png"
             width={100}
             height={75}
+            alt=""
           ></Image>
         </Link>
         <div className="-ml-2 mt-1 text-left uppercase font-light  tracking-widest text-xs">
