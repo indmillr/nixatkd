@@ -95,7 +95,7 @@ export default function About() {
                   className={`${
                     index === itemIndex &&
                     "text-red-600 dark:text-blue-600 after:w-[100%] after:bg-black dark:after:bg-white after:transition-all after:duration-300"
-                  } cursor-pointer capitalize text-xs sm:text-lg font-semibold relative after:w-0 after:h-[1px] after:bg-black dark:after:bg-white after:absolute after:-bottom-1 after:left-0`}
+                  } cursor-pointer capitalize text-sm tracking-tight sm:text-lg font-semibold relative after:w-0 after:h-[1px] after:bg-black dark:after:bg-white after:absolute after:-bottom-1 after:left-0`}
                   onClick={() => setIndex(itemIndex)}
                 >
                   {item.title}
