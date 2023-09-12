@@ -119,7 +119,7 @@ export default function About() {
             })}
           </div>
         </div>
-        <p className="max-w-sm xl:max-w-xl mx-auto mb-2 mt-4 text-xs sm:text-sm font-semibold">
+        <p className="max-w-sm xl:max-w-xl mx-auto mb-2 mt-4 text-sm">
           NTA is a member of the{" "}
           <a
             href="https://www.amaalliance.us/"
