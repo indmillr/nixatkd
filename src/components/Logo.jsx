@@ -5,8 +5,6 @@ import Image from "next/image";
 import DarkModeSwitch from "./DarkModeSwitch";
 import Link from "next/link";
 
-import NTA from "/NTALOGO.png";
-
 export default function Logo() {
   return (
     <div className="w-full flex translate-all duration-1000 items-center justify-between h-max-200 pl-3 pr-5 pt-2">
@@ -14,7 +12,7 @@ export default function Logo() {
         <Link href="/">
           <Image
             className="cursor-pointer"
-            src={NTA}
+            src="/NTALOGO.png"
             width={100}
             height={75}
             alt=""
