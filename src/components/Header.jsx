@@ -52,7 +52,7 @@ export default function Header() {
             <Link
               className={`${
                 link.path === pathname && "text-blue-600"
-              } flex relative items-center group hover:text-red-600 translate-all duration-500 hover:animate-spin`}
+              } flex relative items-center group hover:text-red-600 translate-all duration-500 hover:scale-125`}
               href={link.path}
               key={index}
             >
