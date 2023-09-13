@@ -77,46 +77,41 @@ const formsData = [
     image: "/red.png",
     title: "Hwa-Rang",
     belt: "Red 1 & 2",
-    moves: "19",
-    foot: "Left",
-    meaning:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    moves: "",
+    foot: "",
+    meaning: "(Form Meaning Coming Soon!)",
   },
   {
     image: "/hired.png",
     title: "Choong-Moo",
     belt: "Red 3 & 4",
-    moves: "19",
-    foot: "Left",
-    meaning:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    moves: "",
+    foot: "",
+    meaning: "(Form Meaning Coming Soon!)",
   },
   {
     image: "/brown.png",
     title: "Kwang-Gae",
     belt: "Brown",
-    moves: "19",
-    foot: "Left",
-    meaning:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    moves: "",
+    foot: "",
+    meaning: "(Form Meaning Coming Soon!)",
   },
   {
     image: "/hibrown.png",
     title: "Po Eun",
     belt: "High Brown",
-    moves: "19",
-    foot: "Left",
-    meaning:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    moves: "",
+    foot: "",
+    meaning: "(Form Meaning Coming Soon!)",
   },
   {
     image: "/black.png",
     title: "Gae-Baek",
     belt: "Black",
-    moves: "19",
-    foot: "Left",
-    meaning:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!",
+    moves: "",
+    foot: "",
+    meaning: "(Form Meaning Coming Soon!)",
   },
 ];
 
@@ -142,7 +137,7 @@ const FormsSlider = () => {
         clickable: true,
       }}
       modules={[Navigation, Pagination]}
-      className="h-[450px]"
+      className="h-[435px]"
     >
       {formsData.map((pattern, index) => {
         return (
