@@ -68,12 +68,12 @@ const GallerySlider = () => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className="w-full mb-2 h-[500px] flex justify-end"
+      className="w-full h-[525px]"
     >
       {gallerySlides.slides.map((slide, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="grid grid-cols-2 grid-rows-3 gap-4 cursor-pointer">
+            <div className="grid max-h-screen grid-cols-2 grid-rows-2 sm:grid-rows-3 gap-4 cursor-pointer">
               {slide.images.map((image, index) => {
                 return (
                   <div
@@ -82,7 +82,7 @@ const GallerySlider = () => {
                   >
                     <div className="flex items-center justify-center hover:scale-150 transition duration-500 relative overflow-hidden">
                       {/* image */}
-                      <Image src={image.path} width={200} height={75} alt="" />
+                      <Image src={image.path} width={175} height={60} alt="" />
                       {/* overlay gradient */}
                       <div className="absolute inset-0 opacity-0 group-hover:scale-150 transition-all duration-500"></div>
                     </div>
