@@ -7,7 +7,7 @@ const newsSlides = {
       images: [
         {
           title: "title",
-          path: "/thumb1.jpg",
+          path: "/IMG_0203.jpg",
         },
         {
           title: "title",
