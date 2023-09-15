@@ -143,7 +143,7 @@ const FormsSlider = () => {
         return (
           <SwiperSlide key={index}>
             <div className="flex h-full flex-col items-center gap-x-2 px-8 mt-0">
-              <div className="rounded-xl shadow-lg shadow-gray-500 w-[85%] max-w-[350px] flex flex-col items-center relative mx-auto mb-2 pb-1">
+              <div className="rounded-xl shadow-lg shadow-gray-500 w-[75%] max-w-[350px] flex flex-col items-center relative mx-auto mb-2 pb-2">
                 <div className="flex flex-col">
                   <div className="mb-1 flex items-center">
                     <Image
