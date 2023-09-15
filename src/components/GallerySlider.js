@@ -1,25 +1,25 @@
 "use client";
 
 // data
-const newsSlides = {
+const gallerySlides = {
   slides: [
     {
       images: [
         {
           title: "title",
-          path: "/IMG_0203.jpg",
+          path: "/gallery/thumb11.jpg",
         },
         {
           title: "title",
-          path: "/thumb2.jpg",
+          path: "/gallery/thumb12.jpg",
         },
         {
           title: "title",
-          path: "/thumb3.jpg",
+          path: "/gallery/thumb5.jpg",
         },
         {
           title: "title",
-          path: "/thumb4.jpg",
+          path: "/gallery/thumb6.jpg",
         },
       ],
     },
@@ -27,19 +27,19 @@ const newsSlides = {
       images: [
         {
           title: "title",
-          path: "/thumb4.jpg",
+          path: "/gallery/thumb7.jpg",
         },
         {
           title: "title",
-          path: "/thumb1.jpg",
+          path: "/gallery/thumb8.jpg",
         },
         {
           title: "title",
-          path: "/thumb2.jpg",
+          path: "/gallery/thumb9.jpg",
         },
         {
           title: "title",
-          path: "/thumb3.jpg",
+          path: "/gallery/thumb10.jpg",
         },
       ],
     },
@@ -60,7 +60,7 @@ import { Pagination } from "swiper";
 // icons
 import Image from "next/image";
 
-const NewsSlider = () => {
+const GallerySlider = () => {
   return (
     <Swiper
       spaceBetween={10}
@@ -68,23 +68,23 @@ const NewsSlider = () => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className="h-[400px]"
+      className="w-full mb-2 h-[500px] flex justify-end"
     >
-      {newsSlides.slides.map((slide, index) => {
+      {gallerySlides.slides.map((slide, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="grid grid-cols-2 grid-rows-3 gap-4 cursor-pointer mx-3">
+            <div className="grid grid-cols-2 grid-rows-3 gap-4 cursor-pointer">
               {slide.images.map((image, index) => {
                 return (
                   <div
-                    className="relative rounded-lg overflow-hidden flex items-center justify-center group"
+                    className="relative rounded-lg overflow-hidden flex items-center justify-center"
                     key={index}
                   >
-                    <div className="flex items-center justify-center hover:scale-150 transition duration-500 relative overflow-hidden group">
+                    <div className="flex items-center justify-center hover:scale-150 transition duration-500 relative overflow-hidden">
                       {/* image */}
-                      <Image src={image.path} width={300} height={100} unoptimized alt="" />
+                      <Image src={image.path} width={200} height={75} alt="" />
                       {/* overlay gradient */}
-                      <div className="absolute inset-0 opacity-0 group-hover:scale-150 transition-all duration-700"></div>
+                      <div className="absolute inset-0 opacity-0 group-hover:scale-150 transition-all duration-500"></div>
                     </div>
                   </div>
                 );
@@ -97,4 +97,4 @@ const NewsSlider = () => {
   );
 };
 
-export default NewsSlider;
+export default GallerySlider;

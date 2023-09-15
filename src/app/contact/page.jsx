@@ -80,8 +80,10 @@ export default function Contact() {
                 href="tel:417-860-5220"
                 className="text-blue-600 dark:text-red-600 font-semibold tracking-wider"
               >
-                (417) 860-5220
-              </a>{" "}
+                <button className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-red-500 dark:shadow-blue-500 mr-2 hover:brightness-150">
+                  (417) 860-5220
+                </button>
+              </a>
               M-F After 4:30p
             </p>
             <p>

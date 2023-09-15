@@ -9,7 +9,7 @@ const Schedule = () => {
           {/* text */}
           <div className="text-center flex flex-col mb-0 w-full">
             <h1 className="text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-6 font-semibold">
-              Weekly class{" "}
+              Class{" "}
               <span className="text-red-600 dark:text-blue-600">Schedule</span>.
             </h1>
             <div className="w-full">

@@ -25,13 +25,15 @@ export default function Home() {
           <br />
           Bill Taylor, 4<sup>th</sup> Degree Black Belt
         </p>
-        <div className="justify-center relative flex items-center">
+        <div className="justify-center relative flex items-center space-x-3">
+          <Image src="/USA.png" width={100} height={100} className=""></Image>
           <Image
             src="/ntabadge.png"
             width={125}
             height={125}
             className="animate-spin-slow"
           ></Image>
+          <Image src="/Korea.png" width={100} height={100} className=""></Image>
         </div>
       </div>
     </div>

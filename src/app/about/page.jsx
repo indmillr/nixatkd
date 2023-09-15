@@ -5,6 +5,7 @@ import React, { useState } from "react";
 // IMAGES
 import UTA from "public/UTAlogo.png";
 import AMA from "public/AMAlogo.png";
+import USA from "public/USA.png";
 import Image from "next/image";
 
 //  DATA
@@ -79,9 +80,8 @@ export default function About() {
       <div className="text-center flex flex-col justify-center xl:text-left h-full mx-auto">
         {/* title */}
         <h1 className="text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-6 font-semibold">
-          What we are
-          <br />
-          <span className="text-red-600 dark:text-blue-600">all</span> about.
+          What we are{" "}
+          <span className="text-red-600 dark:text-blue-600">about</span>.
         </h1>
 
         {/* subtitle */}
@@ -119,8 +119,9 @@ export default function About() {
             })}
           </div>
         </div>
-        <p className="max-w-sm xl:max-w-xl mx-auto mb-2 mt-4 text-sm">
-          NTA is a member of the{" "}
+        <p className="max-w-sm xl:max-w-xl mx-auto mb-2 mt-6">
+          NTA is a member of the
+          <br />
           <a
             href="https://www.amaalliance.us/"
             target="_blank"
@@ -130,8 +131,9 @@ export default function About() {
           </a>
         </p>
       </div>
-      <div className="flex items-center justify-between w-full">
-        <Image src={UTA} width={100} height={100} alt="" className="relative" />{" "}
+      <div className="flex items-center justify-between w-full mt-1">
+        <Image src={UTA} width={100} height={100} alt="" className="relative" />
+        <Image src={USA} width={100} height={100} alt="" className="relative" />
         <Image src={AMA} width={100} height={100} alt="" className="relative" />
       </div>
     </div>
