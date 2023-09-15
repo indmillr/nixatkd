@@ -43,6 +43,18 @@ const gallerySlides = {
         },
       ],
     },
+    {
+      images: [
+        {
+          title: "title",
+          path: "/gallery/thumb13.jpg",
+        },
+        {
+          title: "title",
+          path: "/gallery/thumb14.jpg",
+        },
+      ],
+    },
   ],
 };
 
@@ -80,7 +92,7 @@ const GallerySlider = () => {
                     className="relative rounded-lg overflow-hidden flex items-center justify-center"
                     key={index}
                   >
-                    <div className="flex items-center justify-center hover:scale-150 transition duration-500 relative overflow-hidden">
+                    <div className="flex items-center justify-center hover:scale-150 hover:brightness-110 brightness-90 transition duration-500 relative overflow-hidden">
                       {/* image */}
                       <Image src={image.path} width={175} height={60} alt="" />
                       {/* overlay gradient */}
