@@ -82,7 +82,7 @@ const NewsSlider = () => {
                   >
                     <div className="flex items-center justify-center hover:scale-150 transition duration-500 relative overflow-hidden group">
                       {/* image */}
-                      <Image src={image.path} width={300} height={100} alt="" />
+                      <Image src={image.path} width={300} height={100} unoptimized alt="" />
                       {/* overlay gradient */}
                       <div className="absolute inset-0 opacity-0 group-hover:scale-150 transition-all duration-700"></div>
                     </div>
