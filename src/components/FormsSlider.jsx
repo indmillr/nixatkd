@@ -3,7 +3,7 @@
 // FORMS DATA
 const formsData = [
   {
-    image: "/white.png",
+    image: "/belts/white.png",
     title: "Chon Ji",
     belt: "White",
     moves: "19",
@@ -11,7 +11,7 @@ const formsData = [
     meaning: "Heaven and Earth.",
   },
   {
-    image: "/yellow.png",
+    image: "/belts/yellow.png",
     title: "Dan-Gun",
     belt: "Yellow",
     moves: "21",
@@ -20,7 +20,7 @@ const formsData = [
       "Dan-Gun is named after the Holy Dan-Gun, legendary founder of Korea in the year 2333 BC.",
   },
   {
-    image: "/hiyellow.png",
+    image: "/belts/hiyellow.png",
     title: "Do-San",
     belt: "High Yellow",
     moves: "24",
@@ -29,7 +29,7 @@ const formsData = [
       "Do-San is the pseudonym of the patriot Ahn Chang-Ho (1876-1938). The 24 movements represents his entire life, which he devoted to furthering the education of Korea and its independence movements.",
   },
   {
-    image: "/green.png",
+    image: "/belts/green.png",
     title: "Won-Hyo",
     belt: "Green",
     moves: "28",
@@ -38,7 +38,7 @@ const formsData = [
       "Won-Hyo was the noted monk who introduced Buddhism to the Silla Dynasty in the year 686 AD.",
   },
   {
-    image: "/higreen.png",
+    image: "/belts/higreen.png",
     title: "Yul-Gok",
     belt: "High Green",
     moves: "38",
@@ -47,7 +47,7 @@ const formsData = [
       "Yol-Gok is the pseudonym of a great philosopher and scholar Yi-i (pronounced 'Ye-e')(1536-1584) nicknamed the 'Confucius of Korea.' The 38 moves refer to his birthplace on the 38 latitude and the diagram + represents scholar.",
   },
   {
-    image: "/blue.png",
+    image: "/belts/blue.png",
     title: "Joong-Gun",
     belt: "Blue",
     moves: "32",
@@ -56,7 +56,7 @@ const formsData = [
       "Joon-Gun is named after the patrios Ahn Joon-Gun, who assassinated Hiro-Bumi Ito, the first Japanese Governor General of Korea, known as the man who played the leading part in the Korea-Japan merger. The 32 moves represent Mr. Ahn's ago when he was executed at Lui-Shung prison in 1910.",
   },
   {
-    image: "/hiblue.png",
+    image: "/belts/hiblue.png",
     title: "Toi-Gye",
     belt: "High Blue",
     moves: "37",
@@ -65,7 +65,7 @@ const formsData = [
       "Toi-Gye is the pen name of the noted scholar Yi-Hwang (16th century), an authorite on Neo-Confucianism. The 37 moves refer to his birth place on the 37 latitude and the diagram + represents scholar.",
   },
   {
-    image: "/purple.png",
+    image: "/belts/purple.png",
     title: "(Review)",
     belt: "Purple",
     moves: "",
@@ -74,7 +74,7 @@ const formsData = [
       "(This is a review of White Belt through High Blue Belt. OPTION 1: Give all the form meanings prior to belt testing to be eligible to test for Red 1. OPTION 2: Give part of the form meanings prior to belt testing to be eligible to test for High Purple.)",
   },
   {
-    image: "/red.png",
+    image: "/belts/red.png",
     title: "Hwa-Rang",
     belt: "Red 1 & 2",
     moves: "",
@@ -82,7 +82,7 @@ const formsData = [
     meaning: "(Form Meaning Coming Soon!)",
   },
   {
-    image: "/hired.png",
+    image: "/belts/hired.png",
     title: "Choong-Moo",
     belt: "Red 3 & 4",
     moves: "",
@@ -90,7 +90,7 @@ const formsData = [
     meaning: "(Form Meaning Coming Soon!)",
   },
   {
-    image: "/brown.png",
+    image: "/belts/rown.png",
     title: "Kwang-Gae",
     belt: "Brown",
     moves: "",
@@ -98,7 +98,7 @@ const formsData = [
     meaning: "(Form Meaning Coming Soon!)",
   },
   {
-    image: "/hibrown.png",
+    image: "/belts/hibrown.png",
     title: "Po Eun",
     belt: "High Brown",
     moves: "",
@@ -106,7 +106,7 @@ const formsData = [
     meaning: "(Form Meaning Coming Soon!)",
   },
   {
-    image: "/black.png",
+    image: "/belts/lack.png",
     title: "Gae-Baek",
     belt: "Black",
     moves: "",
