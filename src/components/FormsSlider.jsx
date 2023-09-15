@@ -106,7 +106,7 @@ const formsData = [
     meaning: "(Form Meaning Coming Soon!)",
   },
   {
-    image: "/belts/lack.png",
+    image: "/belts/black.png",
     title: "Gae-Baek",
     belt: "Black",
     moves: "",
