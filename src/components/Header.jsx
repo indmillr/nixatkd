@@ -17,11 +17,7 @@ export const navData = [
     path: "/news",
     icon: <HiNewspaper />,
   },
-  {
-    name: "gallery",
-    path: "/gallery",
-    icon: <HiPhoto />,
-  },
+
   {
     name: "contact",
     path: "/contact",
@@ -45,6 +41,7 @@ import {
   HiNewspaper,
   HiPhoto,
 } from "react-icons/hi2";
+import DarkModeSwitch from "./DarkModeSwitch";
 
 export default function Header() {
   const router = useRouter();
@@ -52,7 +49,7 @@ export default function Header() {
 
   return (
     <div className="flex shadow-lg translate-all duration-1000 shadow-gray-500 justify-center max-w-6xl sm:mx-auto items-center pb-3 pt-0 my-0">
-      <div className="flex cursor-pointer space-x-6 md:space-x-8 lg:space-x-10 text-3xl md:text-2xl lg:text-3xl">
+      <div className="flex flex-col cursor-pointer space-x-6 md:space-x-8 lg:space-x-10 text-3xl md:text-2xl lg:text-3xl">
         {navData.map((link, index) => {
           return (
             <Link
@@ -67,6 +64,7 @@ export default function Header() {
             </Link>
           );
         })}
+        <DarkModeSwitch />
       </div>
     </div>
   );
