@@ -13,7 +13,7 @@ export default function Home() {
             <span className="text-red-600 dark:text-blue-600">Here</span>.
           </h1>
 
-          <p className="max-w-sm mx-auto mb-6 text-left">
+          <p className="max-w-sm mx-auto mb-4 text-left">
             Nixa TaeKwon-Do Academy has been in business for over 20 years. We
             specialize in TaeKwon-Do and Tactical Self-Defense for individuals
             of all ages.{" "}
@@ -24,7 +24,7 @@ export default function Home() {
               Learn More Here
             </Link>
           </p>
-          <p className="border-l border-r border-gray-500 p-2 max-w-sm mx-8 mb-8">
+          <p className="border-l border-r border-gray-500 p-2 max-w-sm mx-8 mb-4">
             <span className="text-blue-600 font-semibold dark:text-red-600">
               Chief Instructor and Owner
             </span>
@@ -32,8 +32,8 @@ export default function Home() {
             Bill Taylor, 4<sup>th</sup> Degree Black Belt
           </p>
           <div className="flex flex-col w-full mt-6">
-            <div className="mb-11 border-b border-t border-gray-500 rounded-xl py-3 px-3">
-              <h3 className="text-[24px] leading-tight md:text-[60px] md:leading-[1.3] mb-4 font-semibold">
+            <div className="border-b border-t border-gray-500 rounded-xl py-3 px-3">
+              <h3 className="text-[24px] leading-tight md:text-[60px] md:leading-[1.3] mb-2 font-semibold">
                 Need{" "}
                 <span className="text-red-600 dark:text-blue-600">more</span>{" "}
                 info?
@@ -62,7 +62,6 @@ export default function Home() {
                 </a>
               </p>
             </div>
-            {/* form */}
           </div>
         </div>
 
