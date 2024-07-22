@@ -31,7 +31,7 @@ export default function Home() {
             <br />
             Bill Taylor, 4<sup>th</sup> Degree Black Belt
           </p>
-          <div className="flex flex-col w-full mt-6">
+          <div className="flex flex-col w-full mt-8">
             <div className="border-b border-t border-gray-500 rounded-xl py-3 px-3">
               <h3 className="text-[24px] leading-tight md:text-[60px] md:leading-[1.3] mb-2 font-semibold">
                 Need{" "}

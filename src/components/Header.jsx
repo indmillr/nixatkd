@@ -100,7 +100,6 @@ export default function Header() {
                       key={index}
                       onClick={toggleMenu}
                     >
-                      {/* icon */}
                       <div className="flex gap-x-3 mt-2 items-center">
                         {link.icon}{" "}
                         <span className="capitalize">{link.name}</span>
