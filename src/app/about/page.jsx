@@ -2,13 +2,11 @@
 
 import React, { useState } from "react";
 
-// IMAGES
 import UTA from "public/UTAlogo.png";
 import AMA from "public/AMAlogo.png";
 import USA from "public/USA.png";
 import Image from "next/image";
 
-//  DATA
 const aboutData = [
   {
     title: "patterns",

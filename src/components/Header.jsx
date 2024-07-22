@@ -11,11 +11,13 @@ import {
   HiEnvelope,
   HiCalendar,
   HiNewspaper,
+  HiQuestionMarkCircle,
 } from "react-icons/hi2";
 import DarkModeSwitch from "./DarkModeSwitch";
 
 export const navData = [
   { name: "home", path: "/", icon: <HiHome /> },
+  { name: "about", path: "/about", icon: <HiQuestionMarkCircle /> },
   { name: "schedule", path: "/schedule", icon: <HiCalendar /> },
   {
     name: "forms",
