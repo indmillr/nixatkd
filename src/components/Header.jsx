@@ -76,7 +76,7 @@ export default function Header() {
         </div>
       </div>
       <div className="flex items-center">
-        <MdOutlineMenu className="text-2xl mb-1" onClick={toggleMenu} />
+        <MdOutlineMenu className="text-2xl mb-1 mr-1" onClick={toggleMenu} />
         {isMenuOpen && (
           <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-gray-500">
             <div

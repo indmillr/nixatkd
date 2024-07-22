@@ -24,7 +24,7 @@ export default function Home() {
               Learn More Here
             </Link>
           </p>
-          <p className="border-b border-t border-gray-500 px-3 py-3 max-w-sm mb-8">
+          <p className="border-l border-r border-gray-500 p-2 max-w-sm mx-8 mb-8">
             <span className="text-blue-600 font-semibold dark:text-red-600">
               Chief Instructor and Owner
             </span>
@@ -32,7 +32,7 @@ export default function Home() {
             Bill Taylor, 4<sup>th</sup> Degree Black Belt
           </p>
           <div className="flex flex-col w-full mt-6">
-            <div className="mb-11 shadow-md shadow-gray-500 rounded-xl py-3 px-3">
+            <div className="mb-11 border-b border-t border-gray-500 rounded-xl py-3 px-3">
               <h3 className="text-[24px] leading-tight md:text-[60px] md:leading-[1.3] mb-4 font-semibold">
                 Need{" "}
                 <span className="text-red-600 dark:text-blue-600">more</span>{" "}
