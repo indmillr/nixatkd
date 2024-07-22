@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
-// THEMES
 import { useTheme } from "next-themes";
-
-// ICONS
 import { MdLightMode } from "react-icons/md";
 import { BsMoonFill } from "react-icons/bs";
 

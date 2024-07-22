@@ -1,6 +1,5 @@
 import React from "react";
 
-// LINK
 import Link from "next/link";
 
 export default function MenuItem({ title, address, Icon }) {

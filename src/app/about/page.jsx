@@ -7,69 +7,7 @@ import AMA from "public/AMAlogo.png";
 import USA from "public/USA.png";
 import Image from "next/image";
 
-const aboutData = [
-  {
-    title: "patterns",
-    info: [
-      {
-        title:
-          "Students learn a new pattern at each belt rank, starting at our beginning pattern, Chon-Ji, and progressing through ranks up to our highest black-belt patterns.",
-        title2:
-          "Our primary patterns are traditional TaeKwon-Do patterns, known as the Chang Hun Kwan style. We also teach a set of secondary patterns known as Choong Sil Kwan.",
-        icons: [],
-      },
-    ],
-  },
-  {
-    title: "self-defense",
-    info: [
-      {
-        title:
-          "Self-Defense is incorporated into our classes with a curriculum designed for each belt level. As students progress through the ranks, we teach a variety of self-defense, adding to the skill, technique, and difficulty.",
-      },
-    ],
-  },
-  {
-    title: "tenets",
-    info: [
-      {
-        stage: "Courtesy",
-      },
-      {
-        stage: "Integrity",
-      },
-      {
-        stage: "Perseverance",
-      },
-      {
-        stage: "Self-Control",
-      },
-      {
-        stage: "Indomitable Spirit",
-      },
-    ],
-  },
-  {
-    title: "student's oath",
-    info: [
-      {
-        stage: "I shall observe the Tenets of TaeKwon-Do.",
-      },
-      {
-        stage: "I shall respect Instructors and Seniors.",
-      },
-      {
-        stage: "I shall never misuse TaeKwon-Do.",
-      },
-      {
-        stage: "I will be a champion of freedom and justice.",
-      },
-      {
-        stage: "I will build a more peaceful world.",
-      },
-    ],
-  },
-];
+import { aboutData } from "../../../lib/data";
 
 export default function About() {
   const [index, setIndex] = useState(0);
@@ -105,7 +43,6 @@ export default function About() {
                     key={itemIndex}
                     className="flex-1 flex flex-col max-w-max items-center"
                   >
-                    {/* title */}
                     <div className="mx-2 mb-2 text-left text-lg">
                       {item.title}
                     </div>
