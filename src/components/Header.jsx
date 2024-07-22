@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import {
   HiHome,
   HiCube,
-  HiEnvelope,
+  // HiEnvelope,
   HiCalendar,
   HiNewspaper,
   HiQuestionMarkCircle,
@@ -29,11 +29,11 @@ export const navData = [
     path: "/news",
     icon: <HiNewspaper />,
   },
-  {
-    name: "contact",
-    path: "/contact",
-    icon: <HiEnvelope />,
-  },
+  // {
+  //   name: "contact",
+  //   path: "/contact",
+  //   icon: <HiEnvelope />,
+  // },
 ];
 
 export default function Header() {
