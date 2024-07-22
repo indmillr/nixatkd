@@ -90,7 +90,7 @@ export default function Header() {
                   </button>
                 </div> */}
                 <MdClose
-                  className="fixed top-3 right-3 text-2xl"
+                  className="fixed top-3 right-3 text-2xl cursor-pointer"
                   onClick={toggleMenu}
                 />
                 {navData.map((link, index) => {
