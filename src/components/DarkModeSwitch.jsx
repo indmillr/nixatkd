@@ -22,19 +22,19 @@ export default function DarkModeSwitch() {
       {mounted &&
         (currentTheme === "dark" ? (
           <div
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer hover:text-blue-600"
             onClick={() => setTheme("light")}
           >
             <MdLightMode className="text-2x cursor-pointer hover:text-blue-600 animate-pulse" />
-            <span className="text-lg ml-3">Lights On</span>
+            <span className="text-lg ml-3 hover:text-blue-600">Lights On</span>
           </div>
         ) : (
           <div
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer hover:text-red-600"
             onClick={() => setTheme("dark")}
           >
             <BsMoonFill className="text-2xl cursor-pointer hover:text-red-600 animate-pulse" />
-            <span className="text-lg ml-3">Lights Off</span>
+            <span className="text-lg ml-3 hover:text-red-600">Lights Off</span>
           </div>
         ))}
     </>
