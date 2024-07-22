@@ -65,7 +65,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="justify-center relative flex items-center space-x-3">
+        <div className="justify-center relative flex items-center space-x-3 mt-2">
           <Image
             src="/USA.png"
             width={100}
