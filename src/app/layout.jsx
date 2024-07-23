@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Providers>
           <Header />
-          <div className="mt-[50px] bg-lighter dark:bg-dark min-h-full">
+          <div className="pt-[50px] bg-light dark:bg-dark min-h-full">
             {children}
           </div>
         </Providers>

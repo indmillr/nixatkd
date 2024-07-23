@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-full h-[85vh] flex flex-col justify-center mt-[50px] pt-[10px] px-5 bg-lighter dark:bg-dark">
-      <div className="text-center flex flex-col justify-between h-full mx-auto bg-lighter dark:bg-dark">
+    <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
+      <div className="text-center flex flex-col justify-between mx-auto bg-lighter dark:bg-dark">
         <div className="flex flex-col bg-lighter dark:bg-dark">
           <h1 className="text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-6 font-semibold">
             Becoming a <br />
@@ -32,7 +32,7 @@ export default function Home() {
             Bill Taylor, 4<sup>th</sup> Degree Black Belt
           </p>
           <div className="flex flex-col w-full mt-4">
-            <div className="bg-white dark:bg-black rounded-xl py-3 px-3 shadow-sm">
+            <div className="bg-white dark:bg-black rounded-xl py-3 px-3 shadow-md">
               <h3 className="text-[24px] leading-tight md:text-[60px] md:leading-[1.3] mb-2 font-semibold">
                 Need{" "}
                 <span className="text-secondary dark:text-primary">more</span>{" "}
