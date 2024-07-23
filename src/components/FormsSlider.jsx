@@ -58,7 +58,7 @@ const FormsSlider = () => {
                   {pattern.title}
                 </div>
 
-                <div className="text-left w-[375px] h-[375px] overflow-y-auto rounded-xl shadow-md p-3 bg-white dark:bg-black">
+                <div className="text-left w-[300px] h-[375px] overflow-y-auto rounded-xl shadow-md p-3 bg-white dark:bg-black">
                   {pattern.meaning}
                 </div>
               </div>
