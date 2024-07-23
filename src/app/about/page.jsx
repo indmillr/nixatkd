@@ -19,7 +19,7 @@ export default function About() {
             What we are{" "}
             <span className="text-secondary dark:primary">about</span>.
           </h1>
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-fit">
             <div className="flex gap-x-4 w-[365px] items-center justify-between mx-auto mb-3 text-primary dark:text-secondary">
               {aboutData.map((item, itemIndex) => {
                 return (
@@ -36,7 +36,7 @@ export default function About() {
                 );
               })}
             </div>
-            <div className="rounded-xl bg-white dark:bg-black shadow-md w-full px-4 pt-4 pb-6">
+            <div className="rounded-xl bg-white dark:bg-black shadow-md min-h-[300px] w-[450px] px-4 pt-4 pb-6">
               <div className="flex flex-col items-center w-full">
                 {aboutData[index].info.map((item, itemIndex) => {
                   return (
