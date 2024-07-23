@@ -52,7 +52,7 @@ export default function Header() {
   }, [menuRef]);
 
   return (
-    <div className="fixed shadow-sm bg-lighter dark:bg-darker top-0 z-50 w-full flex items-center justify-between h-[50px] px-3 pt-3 pb-2">
+    <div className="fixed shadow-sm bg-white dark:bg-black top-0 z-50 w-full flex items-center justify-between h-[50px] px-3 pt-3 pb-2">
       <div className="flex flex-row -ml-3">
         <Link href="/">
           <Image
@@ -75,10 +75,10 @@ export default function Header() {
           onClick={toggleMenu}
         />
         {isMenuOpen && (
-          <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-dark">
+          <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-black">
             <div
               ref={menuRef}
-              className="bg-lighter dark:bg-darker fixed top-0 right-0 z-50 h-[50%] w-[50%] pt-8 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
+              className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 w-[50%] pt-8 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
             >
               <div className="flex flex-col justify-between">
                 {/* <div className="mt-8 flex w-full justify-center mb-2">

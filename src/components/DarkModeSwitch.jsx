@@ -21,7 +21,7 @@ export default function DarkModeSwitch() {
             className="flex items-center cursor-pointer transition-all duration-300 ease-in-out hover:text-primary"
             onClick={() => setTheme("light")}
           >
-            <MdLightMode className="text-2x" />
+            <MdLightMode className="text-lg" />
             <span className="text-lg ml-3">Lights On</span>
           </div>
         ) : (
@@ -29,7 +29,7 @@ export default function DarkModeSwitch() {
             className="flex items-center cursor-pointer hover:text-secondary duration-300 ease-in-out transition-all"
             onClick={() => setTheme("dark")}
           >
-            <BsMoonFill className="text-2xl" />
+            <BsMoonFill className="text-lg" />
             <span className="text-lg ml-3">Lights Off</span>
           </div>
         ))}
