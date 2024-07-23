@@ -8,7 +8,7 @@ export default function Providers({ children }) {
   return (
     <div>
       <ThemeProvider enableSystem={true} attribute="class">
-        <div className="dark:bg-black/80 dark:text-white text-gray-900 transition-colors duration-300 min-h-screen select-none">
+        <div className="dark:bg-dark dark:text-lighter text-darker bg-lighter transition-colors duration-300 min-h-full select-none">
           {children}
         </div>
       </ThemeProvider>
