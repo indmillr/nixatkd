@@ -4,18 +4,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper";
+import "swiper/css/effect-flip";
+import "swiper/css/effect-cube";
+import { Navigation, Pagination, EffectFlip, EffectCube } from "swiper";
 import Image from "next/image";
 import { formsData } from "../../lib/data";
 
 const FormsSlider = () => {
   return (
     <Swiper
+      effect={"cube"}
       navigation={true}
       pagination={{
         clickable: true,
+        dynamicBullets: true,
       }}
-      modules={[Navigation, Pagination]}
+      modules={[Navigation, Pagination, EffectCube]}
       className="h-full"
     >
       {formsData.map((pattern, index) => {
