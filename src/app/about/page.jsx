@@ -36,7 +36,7 @@ export default function About() {
                 );
               })}
             </div>
-            <div className="rounded-xl bg-white dark:bg-black shadow-md min-h-[300px] w-[450px] px-4 pt-4 pb-6">
+            <div className="rounded-xl bg-white dark:bg-black shadow-md min-h-[300px] w-[400px] px-4 pt-4 pb-6">
               <div className="flex flex-col items-center w-full">
                 {aboutData[index].info.map((item, itemIndex) => {
                   return (
