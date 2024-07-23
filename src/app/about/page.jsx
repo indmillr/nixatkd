@@ -13,7 +13,7 @@ export default function About() {
   const [index, setIndex] = useState(0);
   return (
     <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
-      <div className="text-center flex flex-col justify-between mx-auto">
+      <div className="text-center flex flex-col justify-between mx-auto bg-lighter dark:bg-dark">
         <div>
           <h1 className="text-[35px] leading-tight mb-6 font-semibold">
             What we are{" "}
@@ -36,7 +36,7 @@ export default function About() {
                 );
               })}
             </div>
-            <div className="rounded-xl bg-white dark:bg-black shadow-md min-h-[300px] w-[400px] px-4 pt-4 pb-6">
+            <div className="rounded-xl bg-white dark:bg-black shadow-md min-h-[350px] w-[400px] px-4 pt-4 pb-6">
               <div className="flex flex-col items-center w-full">
                 {aboutData[index].info.map((item, itemIndex) => {
                   return (
