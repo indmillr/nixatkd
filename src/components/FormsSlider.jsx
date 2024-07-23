@@ -16,7 +16,7 @@ const FormsSlider = () => {
         clickable: true,
       }}
       modules={[Navigation, Pagination]}
-      className="h-[450px]"
+      className="h-full"
     >
       {formsData.map((pattern, index) => {
         return (
@@ -30,7 +30,7 @@ const FormsSlider = () => {
                       width={60}
                       height={60}
                       alt=""
-                      className="rounded-full border border-gray-300 dark:border-gray-700 shadow-md shadow-gray-300 dark:shadow-gray-700 mr-2"
+                      className="rounded-full border border-gray-300 dark:border-gray-700 shadow-md mr-2"
                     />
                     <div className="ml-2 my-0 py-0 flex flex-col flex-1 text-left">
                       <div className="flex border-b border-gray-300 dark:border-gray-700 my-0 py-0 uppercase font-bold tracking-widest items-center">
