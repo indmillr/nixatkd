@@ -52,7 +52,7 @@ export default function Header() {
   }, [menuRef]);
 
   return (
-    <div className="w-full flex items-center justify-between h-[50px] px-3 pt-3 pb-2">
+    <div className="fixed shadow-sm bg-lighter dark:bg-darker top-0 z-50 w-full flex items-center justify-between h-[50px] px-3 pt-3 pb-2">
       <div className="flex flex-row -ml-3">
         <Link href="/">
           <Image
@@ -75,10 +75,10 @@ export default function Header() {
           onClick={toggleMenu}
         />
         {isMenuOpen && (
-          <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-gray-500">
+          <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-dark">
             <div
               ref={menuRef}
-              className="bg-gray-100 dark:bg-black fixed top-0 right-0 z-50 h-[50%] w-[50%] pt-8 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
+              className="bg-lighter dark:bg-darker fixed top-0 right-0 z-50 h-[50%] w-[50%] pt-8 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
             >
               <div className="flex flex-col justify-between">
                 {/* <div className="mt-8 flex w-full justify-center mb-2">
@@ -94,8 +94,8 @@ export default function Header() {
                   return (
                     <Link
                       className={`${
-                        link.path === pathname && "text-blue-600"
-                      } flex relative group hover:text-blue-600 dark:hover:text-red-600  focus:text-red-600 dark:focus:text-blue-600`}
+                        link.path === pathname && "text-primary"
+                      } flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary`}
                       href={link.path}
                       key={index}
                       onClick={toggleMenu}

@@ -38,7 +38,7 @@ const ScheduleSlider = () => {
       {scheduleData.map((item, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="h-max rounded-xl border border-gray-500 shadow-lg shadow-gray-500 px-4 pt-4 pb-1 flex gap-x-6 group cursor-pointer dark:hover:shadow-white hover:shadow-black transition-all duration-300 flex-col">
+            <div className="h-max rounded-xl border border-gray-500 shadow-sm shadow-gray-500 px-4 pt-4 pb-1 flex gap-x-6 group cursor-pointer dark:hover:shadow-white hover:shadow-black transition-all duration-300 flex-col">
               <div className="text-xl uppercase dark:text-red-600 text-blue-600 mb-2 font-bold">
                 {item.title}
               </div>

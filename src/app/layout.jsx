@@ -1,10 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-
-// COMPONENTS
 import Providers from "./Providers";
 import Header from "@/components/Header";
-import Logo from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Providers>
           <Header />
-          {children}
+          <div className="mt-[55px]">{children}</div>
         </Providers>
       </body>
     </html>
