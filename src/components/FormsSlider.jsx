@@ -20,7 +20,7 @@ const FormsSlider = () => {
     >
       {formsData.map((pattern, index) => {
         return (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} className="mb-6">
             <div className="flex h-full flex-col items-center gap-x-2 px-8 mt-0">
               <div className="rounded-xl bg-white dark:bg-black shadow-md min-w-full flex flex-col items-center relative mx-auto mb-2 py-2">
                 <div className="flex flex-col">
@@ -58,7 +58,7 @@ const FormsSlider = () => {
                   {pattern.title}
                 </div>
 
-                <div className="text-left h-[300px] overflow-y-auto px-3">
+                <div className="text-left h-[300px] overflow-y-auto rounded-xl shadow-md p-3 bg-white dark:bg-black">
                   {pattern.meaning}
                 </div>
               </div>
