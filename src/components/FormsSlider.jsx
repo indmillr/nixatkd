@@ -54,11 +54,11 @@ const FormsSlider = () => {
               </div>
 
               <div className="w-full flex-1 flex flex-col items-center px-3 mt-1 before:w-[1px] mb-5 relative">
-                <div className="my-1 text-blue-600 dark:text-red-600 text-2xl md:text-2xl font-bold lg:font-normal lg:text-3xl uppercase tracking-widest">
+                <div className="my-1 text-blue-600 dark:text-red-600 text-2xl font-semibold uppercase tracking-widest">
                   {pattern.title}
                 </div>
 
-                <div className="text-left h-[300px] overflow-y-auto rounded-xl shadow-md p-3 bg-white dark:bg-black">
+                <div className="text-left w-[375px] h-[375px] overflow-y-auto rounded-xl shadow-md p-3 bg-white dark:bg-black">
                   {pattern.meaning}
                 </div>
               </div>
