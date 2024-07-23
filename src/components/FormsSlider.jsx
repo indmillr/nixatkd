@@ -22,7 +22,7 @@ const FormsSlider = () => {
         return (
           <SwiperSlide key={index}>
             <div className="flex h-full flex-col items-center gap-x-2 px-8 mt-0">
-              <div className="rounded-xl shadow-lg shadow-gray-500 w-[75%] max-w-[350px] flex flex-col items-center relative mx-auto mb-2 pb-2">
+              <div className="rounded-xl bg-white dark:bg-black shadow-md min-w-full flex flex-col items-center relative mx-auto mb-2 py-2">
                 <div className="flex flex-col">
                   <div className="mb-1 flex items-center">
                     <Image
@@ -53,12 +53,14 @@ const FormsSlider = () => {
                 </div>
               </div>
 
-              <div className="w-full flex-1 flex flex-col items-center px-3 mt-1 before:w-[1px] lg:before:bg-black dark:lg:before:bg-white lg:before:absolute lg:before:left-0 mb-5 border-black lg:before:h-[200px] relative">
+              <div className="w-full flex-1 flex flex-col items-center px-3 mt-1 before:w-[1px] mb-5 relative">
                 <div className="my-1 text-blue-600 dark:text-red-600 text-2xl md:text-2xl font-bold lg:font-normal lg:text-3xl uppercase tracking-widest">
                   {pattern.title}
                 </div>
 
-                <div className="text-left h-full px-2">{pattern.meaning}</div>
+                <div className="text-left h-[300px] overflow-y-auto px-3">
+                  {pattern.meaning}
+                </div>
               </div>
             </div>
           </SwiperSlide>
