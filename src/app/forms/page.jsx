@@ -18,9 +18,22 @@ export default function Forms() {
           {isAuthenticated ? (
             <FormsSlider />
           ) : (
-            <div className="text-center">
-              <p className="mb-4">You must be logged in to view Forms.</p>
-              <Link href="/login">Go to Login</Link>
+            <div className="flex flex-col w-full mt-4">
+              <div className="bg-white dark:bg-black rounded-xl py-3 px-3 shadow-md">
+                <p className="mb-8">You must be logged in to view Forms.</p>
+                <Link href="/login">
+                  <button className="border border-gray-500 px-4 py-3 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none">
+                    Sign In
+                  </button>
+                </Link>
+                <p className="mt-6">Don&rsquo;t have an account?</p>
+                <Link
+                  href="/signup"
+                  className="ml-2 font-semibold text-secondary dark:text-primary hover:text-primary dark:hover:text-secondary transition-all duration-300 ease-in-out active:underline active:underline-offset-4 text-sm"
+                >
+                  Click here to sign up.
+                </Link>
+              </div>
             </div>
           )}
         </div>
