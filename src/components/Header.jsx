@@ -144,9 +144,6 @@ export default function Header() {
                   className="fixed top-3 right-3 text-2xl cursor-pointer"
                   onClick={toggleMenu}
                 />
-                {isAuthenticated && user && (
-                  <div className="text-lg mb-2">Hi, {user.name}!</div>
-                )}
                 {navData.map((link, index) => (
                   <Link
                     className={`${
