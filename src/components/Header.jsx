@@ -52,7 +52,7 @@ export default function Header() {
   }, [menuRef]);
 
   return (
-    <div className="fixed shadow-sm bg-white dark:bg-black top-0 z-50 w-full flex items-center justify-between h-[50px] px-3 pt-3 pb-2">
+    <div className="fixed shadow-sm bg-white dark:bg-black top-0 z-50 w-full flex items-center justify-between h-[50px] p-3">
       <div className="flex flex-row -ml-3">
         <Link href="/">
           <Image
@@ -69,9 +69,14 @@ export default function Header() {
           <p>Academy</p>
         </div>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center gap-x-5 justify-center">
+        <Link href="/login">
+          <button className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm">
+            Sign In
+          </button>
+        </Link>
         <MdOutlineMenu
-          className="text-2xl mb-1 mr-1 cursor-pointer"
+          className="text-2xl m-1 cursor-pointer"
           onClick={toggleMenu}
         />
         {isMenuOpen && (
