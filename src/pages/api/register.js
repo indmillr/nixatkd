@@ -1,17 +1,26 @@
 import { PrismaClient } from "@prisma/client";
 import { hashPassword } from "../../utils/auth";
+import { rolesOrder } from "../../../lib/data";
 
 const prisma = new PrismaClient();
+
+const getPrecedingRoles = (selectedRole) => {
+  const index = rolesOrder.indexOf(selectedRole);
+  if (index === -1) return [];
+  return rolesOrder.slice(0, index + 1);
+};
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).end(); // Method Not Allowed
   }
 
-  const { name, email, username, password, roles } = req.body;
+  const { name, email, username, password, role } = req.body;
 
   try {
     const hashedPassword = await hashPassword(password);
+    const rolesToAdd = getPrecedingRoles(role);
+
     const user = await prisma.user.create({
       data: {
         name,
@@ -19,7 +28,9 @@ export default async function handler(req, res) {
         username,
         password: hashedPassword,
         roles: {
-          create: roles.map((role) => ({ role: { connect: { name: role } } })),
+          create: rolesToAdd.map((role) => ({
+            role: { connect: { name: role } },
+          })),
         },
       },
     });
