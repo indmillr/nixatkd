@@ -1,9 +1,41 @@
 "use client";
 
-import { Card, Input } from "@material-tailwind/react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function Login() {
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error("Login error response:", errorData);
+        throw new Error("Login failed");
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      router.push("/"); // Redirect to the home page
+    } catch (error) {
+      console.error("Login error:", error);
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
       <div className="text-center flex flex-col w-[85%] justify-center h-full mx-auto">
@@ -15,23 +47,34 @@ export default function Login() {
 
         <div className="flex flex-col w-full mt-4">
           <div className="bg-white dark:bg-black rounded-xl p-6 shadow-md flex flex-col items-start">
-            <p className="mb-2">Username</p>
-            <input
-              type="text"
-              placeholder=""
-              className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
-            />
-            <p className="mb-2 mt-4">Password</p>
-            <input
-              type="password"
-              placeholder=""
-              className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
-            />
-            <div className="flex items-center justify-center w-full mt-8">
-              <button className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none">
-                Sign In
-              </button>
-            </div>
+            <form onSubmit={handleLogin} className="w-full">
+              <p className="mb-2">Username</p>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder=""
+                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                required
+              />
+              <p className="mb-2 mt-4">Password</p>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder=""
+                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                required
+              />
+              <div className="flex items-center justify-center w-full mt-8">
+                <button
+                  type="submit"
+                  className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none"
+                >
+                  Sign In
+                </button>
+              </div>
+            </form>
           </div>
 
           <p className="mt-6">Don&rsquo;t have an account?</p>
@@ -45,4 +88,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;

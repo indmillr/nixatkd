@@ -8,11 +8,11 @@ export default async function handler(req, res) {
     return res.status(405).end(); // Method Not Allowed
   }
 
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
     const user = await prisma.user.findUnique({
-      where: { email },
+      where: { username },
       include: { roles: { include: { role: true } } },
     });
 
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({ token });
   } catch (error) {
-    console.error(error);
+    console.error("Server error:", error);
     res.status(500).json({ error: "Login failed" });
   }
 }
