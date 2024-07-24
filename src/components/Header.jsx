@@ -93,7 +93,7 @@ export default function Header() {
               <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-black dark:bg-white dark:bg-opacity-30">
                 <div
                   ref={profileRef}
-                  className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 w-[50%] pt-8 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
+                  className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 pt-8 px-10 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
                 >
                   <div className="flex flex-col justify-between pb-8">
                     <MdClose
@@ -102,7 +102,7 @@ export default function Header() {
                     />
                     <div className="text-sm mb-2">Hi, {user.name}!</div>
                     <Link
-                      href="/settings"
+                      href="/"
                       className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                       onClick={() => setIsProfileOpen(false)}
                     >
@@ -137,7 +137,7 @@ export default function Header() {
           <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-black dark:bg-white dark:bg-opacity-30">
             <div
               ref={menuRef}
-              className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 w-[50%] pt-8 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
+              className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 pt-8 px-10 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
             >
               <div className="flex flex-col justify-between">
                 <MdClose
