@@ -35,7 +35,13 @@ export default async function handler(req, res) {
       },
     });
 
-    res.status(201).json(user);
+    res.status(201).json({
+      user: {
+        name: user.name,
+        username: user.username,
+        roles: rolesToAdd,
+      },
+    });
   } catch (error) {
     console.error("Server error:", error);
     res.status(500).json({ error: "User creation failed" });

@@ -28,9 +28,14 @@ export default async function handler(req, res) {
 
     const token = generateToken(user);
 
-    res
-      .status(200)
-      .json({ token, user: { name: user.name, username: user.username } });
+    res.status(200).json({
+      token,
+      user: {
+        name: user.name,
+        username: user.username,
+        roles: user.roles.map((role) => role.role.name),
+      },
+    });
   } catch (error) {
     console.error("Server error:", error);
     res.status(500).json({ error: "Login failed" });
