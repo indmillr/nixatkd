@@ -100,7 +100,7 @@ export default function Header() {
                       className="fixed top-3 right-3 text-2xl cursor-pointer"
                       onClick={toggleProfile}
                     />
-                    <div className="text-sm mb-2">Hi, {user.name}!</div>
+                    <div className="text-base mb-2">Hi, {user.name}!</div>
                     <Link
                       href="/"
                       className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
@@ -145,7 +145,7 @@ export default function Header() {
                   onClick={toggleMenu}
                 />
                 {isAuthenticated && user && (
-                  <div className="text-sm mb-2">Hi, {user.name}!</div>
+                  <div className="text-lg mb-2">Hi, {user.name}!</div>
                 )}
                 {navData.map((link, index) => (
                   <Link
