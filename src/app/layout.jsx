@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Providers from "./Providers";
 import Header from "@/components/Header";
+import { AuthProvider } from "../context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,12 +18,14 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/img/favicon.ico" />
       </head>
       <body className={inter.className}>
-        <Providers>
-          <Header />
-          <div className="pt-[50px] bg-light dark:bg-dark min-h-full">
-            {children}
-          </div>
-        </Providers>
+        <AuthProvider>
+          <Providers>
+            <Header />
+            <div className="pt-[50px] bg-light dark:bg-dark min-h-full">
+              {children}
+            </div>
+          </Providers>
+        </AuthProvider>
       </body>
     </html>
   );

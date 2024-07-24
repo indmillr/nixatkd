@@ -4,7 +4,7 @@ import Image from "next/image";
 import { MdOutlineMenu, MdClose } from "react-icons/md";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import { useAuth } from "../context/AuthContext";
 import {
   HiHome,
   HiCube,
@@ -35,6 +35,7 @@ export default function Header() {
   const pathname = router.pathname;
   const menuRef = useRef();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, signOut } = useAuth();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -70,11 +71,20 @@ export default function Header() {
         </div>
       </div>
       <div className="flex items-center gap-x-5 justify-center">
-        <Link href="/login">
-          <button className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm">
-            Sign In
+        {isAuthenticated ? (
+          <button
+            onClick={signOut}
+            className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm"
+          >
+            Sign Out
           </button>
-        </Link>
+        ) : (
+          <Link href="/login">
+            <button className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm">
+              Sign In
+            </button>
+          </Link>
+        )}
         <MdOutlineMenu
           className="text-2xl m-1 cursor-pointer"
           onClick={toggleMenu}
@@ -86,33 +96,25 @@ export default function Header() {
               className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 w-[50%] pt-8 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
             >
               <div className="flex flex-col justify-between">
-                {/* <div className="mt-8 flex w-full justify-center mb-2">
-                  <button className="border border-gray-500 rounded-full px-4 py-2">
-                    Sign In
-                  </button>
-                </div> */}
                 <MdClose
                   className="fixed top-3 right-3 text-2xl cursor-pointer"
                   onClick={toggleMenu}
                 />
-                {navData.map((link, index) => {
-                  return (
-                    <Link
-                      className={`${
-                        link.path === pathname && "text-primary"
-                      } flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary`}
-                      href={link.path}
-                      key={index}
-                      onClick={toggleMenu}
-                    >
-                      <div className="flex gap-x-3 mt-2 items-center">
-                        {link.icon}{" "}
-                        <span className="capitalize">{link.name}</span>
-                      </div>
-                    </Link>
-                  );
-                })}
-
+                {navData.map((link, index) => (
+                  <Link
+                    className={`${
+                      link.path === pathname && "text-primary"
+                    } flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary`}
+                    href={link.path}
+                    key={index}
+                    onClick={toggleMenu}
+                  >
+                    <div className="flex gap-x-3 mt-2 items-center">
+                      {link.icon}{" "}
+                      <span className="capitalize">{link.name}</span>
+                    </div>
+                  </Link>
+                ))}
                 <div className="mt-8 mb-2">
                   <DarkModeSwitch />
                 </div>

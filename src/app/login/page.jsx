@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { signIn } = useAuth();
   const router = useRouter();
 
   const handleLogin = async (e) => {
@@ -28,8 +30,7 @@ const Login = () => {
       }
 
       const data = await response.json();
-      localStorage.setItem("token", data.token);
-      router.push("/"); // Redirect to the home page
+      signIn(data.token); // Use the signIn function from the Auth Context
     } catch (error) {
       console.error("Login error:", error);
       alert(error.message);
@@ -69,7 +70,7 @@ const Login = () => {
               <div className="flex items-center justify-center w-full mt-8">
                 <button
                   type="submit"
-                  className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none"
+                  className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm"
                 >
                   Sign In
                 </button>
