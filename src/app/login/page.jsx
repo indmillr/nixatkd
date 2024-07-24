@@ -9,7 +9,6 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = useAuth();
-  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,7 +29,7 @@ const Login = () => {
       }
 
       const data = await response.json();
-      signIn(data.token); // Use the signIn function from the Auth Context
+      signIn(data.token, data.user); // Use the signIn function from the Auth Context
     } catch (error) {
       console.error("Login error:", error);
       alert(error.message);
