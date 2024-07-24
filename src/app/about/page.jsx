@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 
-import UTA from "public/UTAlogo.png";
-import AMA from "public/AMAlogo.png";
-import USA from "public/USA.png";
+import UTA from "../../../public/UTAlogo.png";
+import AMA from "../../../public/AMAlogo.png";
+import USA from "../../../public/USA.png";
 import Image from "next/image";
 
 import { aboutData } from "../../../lib/data";

@@ -8,13 +8,15 @@ export default async function handler(req, res) {
     return res.status(405).end(); // Method Not Allowed
   }
 
-  const { email, password, roles } = req.body;
+  const { name, email, username, password, roles } = req.body;
 
   try {
     const hashedPassword = await hashPassword(password);
     const user = await prisma.user.create({
       data: {
+        name,
         email,
+        username,
         password: hashedPassword,
         roles: {
           create: roles.map((role) => ({ role: { connect: { name: role } } })),
@@ -24,7 +26,7 @@ export default async function handler(req, res) {
 
     res.status(201).json(user);
   } catch (error) {
-    console.error(error);
+    console.error("Server error:", error);
     res.status(500).json({ error: "User creation failed" });
   }
 }
