@@ -237,7 +237,7 @@ const Signup = () => {
                   <button
                     type="submit"
                     disabled
-                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl font-semibold flex"
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl items-center font-semibold flex"
                   >
                     <Spinner className="h-4 w-4 dark:text-primary text-secondary font-bold mr-3" />{" "}
                     Loading...
@@ -245,7 +245,7 @@ const Signup = () => {
                 ) : (
                   <button
                     type="submit"
-                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl font-semibold"
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl items-center font-semibold"
                   >
                     Sign Up
                   </button>

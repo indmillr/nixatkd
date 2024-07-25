@@ -101,7 +101,9 @@ export default function Header() {
                       className="fixed top-3 right-3 text-2xl cursor-pointer"
                       onClick={toggleProfile}
                     />
-                    <div className="text-base mb-2">Hi, {user.name}!</div>
+                    <div className="text-base pb-2 mb-2 text-secondary dark:text-primary mb-2 font-semibold tracking-wider border-b border-gray-500">
+                      Hi {user.firstName}!
+                    </div>
                     <div className="flex flex-col justify-between">
                       <Link
                         href="/" // TODO: Change to Settings page
@@ -119,13 +121,13 @@ export default function Header() {
                           className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                           onClick={() => setIsProfileOpen(false)}
                         >
-                          <div className="flex gap-x-3 mt-2 items-center">
+                          <div className="flex gap-x-3 mt-3 items-center">
                             <FaWrench />
                             <span className="capitalize">Admin</span>
                           </div>
                         </Link>
                       ) : (
-                        <div className="flex gap-x-3 mt-2 items-center dark:text-gray-500 text-gray-300">
+                        <div className="flex gap-x-3 mt-4 items-center dark:text-gray-500 text-gray-300">
                           <FaWrench />
                           <span className="capitalize">Admin</span>
                         </div>
@@ -133,7 +135,7 @@ export default function Header() {
                     </div>
                     <button
                       onClick={handleSignOut}
-                      className="border border-gray-500 px-2 py-1 text-sm font-semibold rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none mt-10"
+                      className="border border-gray-500 px-3 py-2 text-sm font-semibold rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out font-semibold hover:shadow-none mt-10"
                     >
                       Sign Out
                     </button>
@@ -144,7 +146,7 @@ export default function Header() {
           </div>
         ) : (
           <Link href="/login">
-            <button className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold">
+            <button className="border border-gray-500 px-3 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold">
               Sign In
             </button>
           </Link>
@@ -173,13 +175,13 @@ export default function Header() {
                     key={index}
                     onClick={toggleMenu}
                   >
-                    <div className="flex gap-x-3 mt-2 items-center">
+                    <div className="flex gap-x-3 mt-4 items-center">
                       {link.icon}{" "}
                       <span className="capitalize">{link.name}</span>
                     </div>
                   </Link>
                 ))}
-                <div className="mt-8 mb-2">
+                <div className="mt-10 mb-4">
                   <DarkModeSwitch />
                 </div>
               </div>
