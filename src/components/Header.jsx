@@ -13,6 +13,7 @@ import {
   HiNewspaper,
   HiQuestionMarkCircle,
 } from "react-icons/hi2";
+import { FaWrench } from "react-icons/fa";
 import DarkModeSwitch from "./DarkModeSwitch";
 
 export const navData = [
@@ -101,16 +102,35 @@ export default function Header() {
                       onClick={toggleProfile}
                     />
                     <div className="text-base mb-2">Hi, {user.name}!</div>
-                    <Link
-                      href="/"
-                      className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
-                      onClick={() => setIsProfileOpen(false)}
-                    >
-                      <div className="flex gap-x-3 mt-2 items-center">
-                        <MdOutlineSettings />
-                        <span className="capitalize">Settings</span>
-                      </div>
-                    </Link>
+                    <div className="flex flex-col justify-between">
+                      <Link
+                        href="/" // TODO: Change to admin page
+                        className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
+                        onClick={() => setIsProfileOpen(false)}
+                      >
+                        <div className="flex gap-x-3 mt-2 items-center">
+                          <MdOutlineSettings />
+                          <span className="capitalize">Profile</span>
+                        </div>{" "}
+                      </Link>
+                      {user.roles.includes("admin") ? (
+                        <Link
+                          href="/admin"
+                          className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
+                          onClick={() => setIsProfileOpen(false)}
+                        >
+                          <div className="flex gap-x-3 mt-2 items-center">
+                            <FaWrench />
+                            <span className="capitalize">Admin</span>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div className="flex gap-x-3 mt-2 items-center dark:text-gray-500 text-gray-300">
+                          <FaWrench />
+                          <span className="capitalize">Admin</span>
+                        </div>
+                      )}
+                    </div>
                     <button
                       onClick={handleSignOut}
                       className="border border-gray-500 px-2 py-1 text-xs rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none mt-10"
