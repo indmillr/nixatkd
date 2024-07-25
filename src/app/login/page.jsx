@@ -53,22 +53,22 @@ const Login = () => {
         <div className="flex flex-col w-full mt-4">
           <div className="bg-white dark:bg-black rounded-xl p-6 shadow-md flex flex-col items-start">
             <form onSubmit={handleLogin} className="w-full">
-              <p className="mb-2">Username</p>
+              <p className="mb-2 text-left font-semibold">Username</p>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder=""
-                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md dark:border dark:border-gray-600 focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
-              <p className="mb-2 mt-4">Password</p>
+              <p className="mb-2 mt-4 text-left font-semibold">Password</p>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder=""
-                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark dark:border dark:border-gray-600 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
               <div className="flex items-center justify-center w-full mt-8">
@@ -84,7 +84,7 @@ const Login = () => {
                 ) : (
                   <button
                     type="submit"
-                    className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold"
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none font-semibold text-xl"
                   >
                     Sign In
                   </button>

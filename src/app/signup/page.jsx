@@ -101,7 +101,7 @@ const Signup = () => {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder=""
-                    className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                    className="w-full dark:border dark:border-gray-600 p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                     required
                   />
                 </div>
@@ -114,7 +114,7 @@ const Signup = () => {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder=""
-                    className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                    className="w-full dark:border dark:border-gray-600 p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                     required
                   />
                 </div>
@@ -129,7 +129,7 @@ const Signup = () => {
                 value={email}
                 onChange={handleEmailChange}
                 placeholder=""
-                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                className="w-full dark:border dark:border-gray-600 p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
               <p className="h-4 flex items-center mt-1 text-red-500 text-xs italic font-semibold">
@@ -149,7 +149,7 @@ const Signup = () => {
                 value={username}
                 onChange={handleUsernameChange}
                 placeholder=""
-                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark dark:border dark:border-gray-600"
                 required
               />
               <p className="h-4 flex items-center mt-1 text-red-500 text-xs italic font-semibold">
@@ -169,7 +169,7 @@ const Signup = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder=""
-                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
               <p className="h-4 flex items-center mt-1"></p>
@@ -181,7 +181,7 @@ const Signup = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder=""
-                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                className="w-full p-2 text-dark dark:border dark:border-gray-600  dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
               <p className="h-4 flex items-center mt-1 text-red-500 text-xs italic font-semibold">
@@ -199,7 +199,7 @@ const Signup = () => {
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               >
                 <option disabled value="">
@@ -226,7 +226,14 @@ const Signup = () => {
                 <option value="black6">Black 6</option>
               </select>
               <div className="flex items-center justify-center w-full mt-8">
-                {loading ? (
+                {!passwordMatch || !allFieldsFilled ? (
+                  <button
+                    type="button"
+                    className="border border-light dark:border-gray-600  text-gray-400 dark:text-gray-600 px-4 py-2 rounded-lg mr-2 text-xl font-semibold"
+                  >
+                    Sign Up
+                  </button>
+                ) : loading ? (
                   <button
                     type="submit"
                     disabled
@@ -238,8 +245,7 @@ const Signup = () => {
                 ) : (
                   <button
                     type="submit"
-                    className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold"
-                    disabled={!passwordMatch || !allFieldsFilled}
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl font-semibold"
                   >
                     Sign Up
                   </button>
