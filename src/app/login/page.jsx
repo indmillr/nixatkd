@@ -5,16 +5,29 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { Spinner } from "@material-tailwind/react";
+import { LuBadgeAlert } from "react-icons/lu";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // State to store error message
   const { signIn } = useAuth();
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+    setError("");
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setError("");
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
     try {
       const response = await fetch("/api/login", {
@@ -26,16 +39,17 @@ const Login = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.text();
-        console.error("Login error response:", errorData);
-        throw new Error("Login failed");
+        const errorData = await response.json();
+        setError(errorData.error || "Login failed");
+        setLoading(false);
+        return;
       }
 
       const data = await response.json();
       signIn(data.token, data.user); // Use the signIn function from the Auth Context
     } catch (error) {
       console.error("Login error:", error);
-      alert(error.message);
+      setError("An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -53,30 +67,50 @@ const Login = () => {
         <div className="flex flex-col w-full mt-4">
           <div className="bg-white dark:bg-black rounded-xl p-6 shadow-md flex flex-col items-start">
             <form onSubmit={handleLogin} className="w-full">
-              <p className="mb-2 text-left font-semibold">Username</p>
+              <p className="mb-2 mt-2 text-left text-sm font-semibold">
+                Username
+              </p>
               <input
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={handleUsernameChange}
                 placeholder=""
                 className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md dark:border dark:border-gray-600 focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
-              <p className="mb-2 mt-4 text-left font-semibold">Password</p>
+              <p className="h-4 flex items-center mt-2 text-red-500 text-xs italic font-semibold mb-3">
+                {error.includes("User") && (
+                  <>
+                    <LuBadgeAlert className="mr-1 text-base" />
+                    {error}
+                  </>
+                )}
+              </p>
+              <p className="mb-2 mt-4 text-left text-sm font-semibold">
+                Password
+              </p>
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange}
                 placeholder=""
                 className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark dark:border dark:border-gray-600 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
+              <p className="h-4 flex items-center mt-2 text-red-500 text-xs italic font-semibold">
+                {error.includes("Password") && (
+                  <>
+                    <LuBadgeAlert className="mr-1 text-base" />
+                    {error}
+                  </>
+                )}
+              </p>
               <div className="flex items-center justify-center w-full mt-8">
                 {loading ? (
                   <button
                     type="submit"
                     disabled
-                    className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold flex"
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl font-semibold flex"
                   >
                     <Spinner className="h-4 w-4 dark:text-primary text-secondary font-bold mr-3" />{" "}
                     Loading...
