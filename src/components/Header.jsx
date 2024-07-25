@@ -87,18 +87,18 @@ export default function Header() {
         {isAuthenticated ? (
           <div className="relative">
             <HiUserCircle
-              className="text-2xl cursor-pointer"
+              className="text-3xl cursor-pointer"
               onClick={toggleProfile}
             />
             {isProfileOpen && (
               <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-black dark:bg-white dark:bg-opacity-30">
                 <div
                   ref={profileRef}
-                  className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 pt-8 px-10 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
+                  className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 pt-8 pl-8 pr-14 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
                 >
                   <div className="flex flex-col justify-between pb-8">
                     <MdClose
-                      className="fixed top-3 right-3 text-2xl cursor-pointer"
+                      className="fixed top-3 right-3 text-3xl cursor-pointer"
                       onClick={toggleProfile}
                     />
                     <div className="text-base pb-2 mb-2 text-secondary dark:text-primary mb-2 font-semibold tracking-wider border-b border-gray-500">
@@ -152,18 +152,18 @@ export default function Header() {
           </Link>
         )}
         <MdOutlineMenu
-          className="text-2xl m-1 cursor-pointer"
+          className="text-3xl m-1 cursor-pointer"
           onClick={toggleMenu}
         />
         {isMenuOpen && (
           <div className="w-[100vw] h-[100vh] z-50 top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-black dark:bg-white dark:bg-opacity-30">
             <div
               ref={menuRef}
-              className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 pt-8 px-10 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
+              className="bg-white dark:bg-black shadow-md fixed top-0 right-0 z-50 pt-8 pl-8 pr-14 flex justify-center pb-3 my-0 text-2xl rounded-bl-3xl"
             >
               <div className="flex flex-col justify-between">
                 <MdClose
-                  className="fixed top-3 right-3 text-2xl cursor-pointer"
+                  className="fixed top-3 right-3 text-3xl cursor-pointer"
                   onClick={toggleMenu}
                 />
                 {navData.map((link, index) => (

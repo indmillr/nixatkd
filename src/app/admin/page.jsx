@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../context/AuthContext";
 import UserCard from "../../components/UserCard";
+import { Spinner } from "@material-tailwind/react";
 
 const Admin = () => {
   const { user, isAuthenticated } = useAuth();
@@ -64,7 +65,10 @@ const Admin = () => {
         </h1>
 
         {loading ? (
-          <p>Loading users...</p>
+          <div className="flex items-center justify-center">
+            <Spinner className="h-6 w-6 dark:text-primary text-secondary font-bold mr-3" />{" "}
+            <p className="text-lg font-semibold">Loading users...</p>
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {users.map((user) => (

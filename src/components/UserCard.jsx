@@ -114,9 +114,9 @@ const UserCard = ({
   }
 
   return (
-    <div className="relative bg-white dark:bg-black p-4 w-full rounded-xl shadow-md">
+    <div className="relative bg-white dark:bg-black p-4 w-full rounded-xl shadow-md hover:shadow-lg">
       {user.roles.includes("admin") && (
-        <FaWrench className="absolute top-3 right-3 text-primary text-2xl" />
+        <FaWrench className="absolute top-3 right-5 text-primary text-2xl" />
       )}
       {isEditing ? (
         <div className="flex flex-col min-w-full">
