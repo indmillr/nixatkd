@@ -1,20 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Correct hook for app directory
+import { useRouter } from "next/navigation";
 import { useAuth } from "../../context/AuthContext";
 import UserCard from "../../components/UserCard";
 
 const Admin = () => {
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingUserId, setEditingUserId] = useState(null);
 
   useEffect(() => {
-    fetchUsers();
-  }, [user, router]);
+    if (!isAuthenticated || !user.roles.includes("admin")) {
+      router.push("/");
+    } else {
+      fetchUsers();
+    }
+  }, [isAuthenticated, user, router]);
 
   const fetchUsers = async () => {
     try {
