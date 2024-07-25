@@ -104,7 +104,7 @@ export default function Header() {
                     <div className="text-base mb-2">Hi, {user.name}!</div>
                     <div className="flex flex-col justify-between">
                       <Link
-                        href="/" // TODO: Change to admin page
+                        href="/" // TODO: Change to Settings page
                         className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                         onClick={() => setIsProfileOpen(false)}
                       >
@@ -115,7 +115,7 @@ export default function Header() {
                       </Link>
                       {user.roles.includes("admin") ? (
                         <Link
-                          href="/admin"
+                          href="/" // TODO: Change to admin page
                           className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                           onClick={() => setIsProfileOpen(false)}
                         >
@@ -133,7 +133,7 @@ export default function Header() {
                     </div>
                     <button
                       onClick={handleSignOut}
-                      className="border border-gray-500 px-2 py-1 text-xs rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none mt-10"
+                      className="border border-gray-500 px-2 py-1 text-sm font-semibold rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none mt-10"
                     >
                       Sign Out
                     </button>
@@ -144,7 +144,7 @@ export default function Header() {
           </div>
         ) : (
           <Link href="/login">
-            <button className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm">
+            <button className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold">
               Sign In
             </button>
           </Link>

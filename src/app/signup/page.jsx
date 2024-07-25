@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
+import { Spinner } from "@material-tailwind/react";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -11,10 +12,12 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch("/api/register", {
@@ -36,6 +39,8 @@ const Signup = () => {
     } catch (error) {
       console.error("Registration error:", error);
       alert(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -117,12 +122,23 @@ const Signup = () => {
                 <option value="black6">Black 6</option>
               </select>
               <div className="flex items-center justify-center w-full mt-8">
-                <button
-                  type="submit"
-                  className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm"
-                >
-                  Sign Up
-                </button>
+                {loading ? (
+                  <button
+                    type="submit"
+                    disabled
+                    className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold flex"
+                  >
+                    <Spinner className="h-4 w-4 dark:text-primary text-secondary font-bold mr-3" />{" "}
+                    Loading...
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold"
+                  >
+                    Sign Up
+                  </button>
+                )}
               </div>
             </form>
           </div>

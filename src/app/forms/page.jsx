@@ -22,7 +22,7 @@ export default function Forms() {
               <div className="bg-white dark:bg-black rounded-xl py-3 px-3 shadow-md">
                 <p className="mb-8">You must be logged in to view Forms.</p>
                 <Link href="/login">
-                  <button className="border border-gray-500 px-4 py-3 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none">
+                  <button className="border border-gray-500 px-4 py-3 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none font-semibold">
                     Sign In
                   </button>
                 </Link>
