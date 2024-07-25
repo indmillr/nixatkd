@@ -106,14 +106,14 @@ export default function Header() {
                       className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                       onClick={() => setIsProfileOpen(false)}
                     >
-                      <div className="flex gap-x-3 mt-2 items-center mb-10">
+                      <div className="flex gap-x-3 mt-2 items-center">
                         <MdOutlineSettings />
                         <span className="capitalize">Settings</span>
                       </div>
                     </Link>
                     <button
                       onClick={handleSignOut}
-                      className="border border-gray-500 px-2 py-1 text-xs rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none"
+                      className="border border-gray-500 px-2 py-1 text-xs rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none mt-10"
                     >
                       Sign Out
                     </button>
