@@ -62,13 +62,13 @@ export default async function handler(req, res) {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "No User Found!" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Invalid Password!" });
     }
 
     const token = jwt.sign(

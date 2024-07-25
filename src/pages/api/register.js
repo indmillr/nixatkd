@@ -61,7 +61,16 @@ export default async function handler(req, res) {
       },
     });
   } catch (error) {
+    if (error.code === 11000) {
+      // Duplicate key error
+      if (error.keyPattern.email) {
+        return res.status(400).json({ error: "Email already exists!" });
+      }
+      if (error.keyPattern.username) {
+        return res.status(400).json({ error: "Username already exists!" });
+      }
+    }
     console.error("Server error:", error);
-    res.status(500).json({ error: "User creation failed" });
+    res.status(500).json({ error: "User creation failed!" });
   }
 }
