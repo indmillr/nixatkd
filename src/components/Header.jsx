@@ -117,7 +117,7 @@ export default function Header() {
                       </Link>
                       {user.roles.includes("admin") ? (
                         <Link
-                          href="/" // TODO: Change to admin page
+                          href="/admin" // TODO: Change to admin page
                           className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                           onClick={() => setIsProfileOpen(false)}
                         >
