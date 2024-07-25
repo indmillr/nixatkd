@@ -10,6 +10,7 @@ const Admin = () => {
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editingUserId, setEditingUserId] = useState(null);
 
   useEffect(() => {
     fetchUsers();
@@ -26,6 +27,31 @@ const Admin = () => {
     }
   };
 
+  const handleEditUser = (userId) => {
+    setEditingUserId(userId);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingUserId(null);
+  };
+
+  const handleDeleteUser = async (userId) => {
+    try {
+      const response = await fetch(`/api/users/${userId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        fetchUsers();
+        handleCancelEdit();
+      } else {
+        console.error("Failed to delete user");
+      }
+    } catch (error) {
+      console.error("Failed to delete user", error);
+    }
+  };
+
   return (
     <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
       <div className="text-center flex flex-col justify-center h-full mx-auto">
@@ -38,7 +64,16 @@ const Admin = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {users.map((user) => (
-              <UserCard key={user._id} user={user} fetchUsers={fetchUsers} />
+              <UserCard
+                key={user._id}
+                user={user}
+                fetchUsers={fetchUsers}
+                isEditing={editingUserId === user._id}
+                onEditUser={() => handleEditUser(user._id)}
+                onCancelEdit={handleCancelEdit}
+                onDeleteUser={() => handleDeleteUser(user._id)}
+                isAnyUserEditing={editingUserId !== null}
+              />
             ))}
           </div>
         )}

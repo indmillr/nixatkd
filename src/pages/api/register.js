@@ -1,28 +1,7 @@
 import dbConnect from "@/lib/mongoose";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
-
-const rolesOrder = [
-  "white",
-  "loyellow",
-  "hiyellow",
-  "logreen",
-  "higreen",
-  "loblue",
-  "hiblue",
-  "purple",
-  "lored",
-  "hired",
-  "lobrown",
-  "hibrown",
-  "black",
-  "black1",
-  "black2",
-  "black3",
-  "black4",
-  "black5",
-  "black6",
-];
+import { rolesOrder } from "../../../lib/data";
 
 const getPrecedingRoles = (selectedRole) => {
   const index = rolesOrder.indexOf(selectedRole);
