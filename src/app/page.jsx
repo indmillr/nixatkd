@@ -21,7 +21,7 @@ export default function Home() {
               href="/about"
               className="ml-2 font-semibold text-secondary dark:text-primary hover:text-primary dark:hover:text-secondary transition-all duration-300 ease-in-out active:underline active:underline-offset-4 text-sm"
             >
-              Learn More Here
+              Learn More Here!
             </Link>
           </p>
           <p className="p-2 max-w-sm mx-8">
