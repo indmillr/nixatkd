@@ -1,19 +1,35 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { Spinner } from "@material-tailwind/react";
+import { LuBadgeAlert } from "react-icons/lu";
 
 const Signup = () => {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); // State for re-entered password
   const [role, setRole] = useState("");
   const [loading, setLoading] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(true); // State to check password match
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false); // State to check if all fields are filled
   const { signIn } = useAuth();
+
+  useEffect(() => {
+    setPasswordMatch(password === confirmPassword);
+    setAllFieldsFilled(
+      firstName !== "" &&
+        lastName !== "" &&
+        email !== "" &&
+        username !== "" &&
+        password !== "" &&
+        confirmPassword !== "" &&
+        role !== ""
+    );
+  }, [firstName, lastName, email, username, password, confirmPassword, role]);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -25,7 +41,14 @@ const Signup = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, username, password, role }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          username,
+          password,
+          role,
+        }),
       });
 
       if (!response.ok) {
@@ -55,11 +78,20 @@ const Signup = () => {
         <div className="flex flex-col w-full mt-4">
           <div className="bg-white dark:bg-black rounded-xl p-6 shadow-md flex flex-col items-start">
             <form onSubmit={handleRegister} className="w-full">
-              <p className="mb-2">Name</p>
+              <p className="mb-2">First Name</p>
               <input
                 type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder=""
+                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                required
+              />
+              <p className="mb-2 mt-4">Last Name</p>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 placeholder=""
                 className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
@@ -91,6 +123,24 @@ const Signup = () => {
                 className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
                 required
               />
+              <p className="mb-2 mt-4 flex items-center">
+                Confirm Password{" "}
+                {!passwordMatch && (
+                  <span className="text-red-500 text-sm ml-3 italic font-semibold flex items-center">
+                    <LuBadgeAlert className="mr-1 text-lg" />
+                    Passwords do not match!
+                  </span>
+                )}
+              </p>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder=""
+                className="w-full p-2 text-dark dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                required
+              />
+
               <p className="mb-2 mt-4">Current Belt Rank</p>
               <select
                 value={role}
@@ -135,6 +185,7 @@ const Signup = () => {
                   <button
                     type="submit"
                     className="border border-gray-500 px-2 py-1 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-sm font-semibold"
+                    disabled={!passwordMatch || !allFieldsFilled}
                   >
                     Sign Up
                   </button>
@@ -142,14 +193,6 @@ const Signup = () => {
               </div>
             </form>
           </div>
-
-          <p className="mt-6">Don&rsquo;t have an account?</p>
-          <Link
-            href="/login"
-            className="ml-2 font-semibold text-secondary dark:text-primary hover:text-primary dark:hover:text-secondary transition-all duration-300 ease-in-out active:underline active:underline-offset-4 text-sm"
-          >
-            Click here to sign up.
-          </Link>
         </div>
       </div>
     </div>
