@@ -217,13 +217,13 @@ const Signup = () => {
                 <option value="hired">High Red</option>
                 <option value="lobrown">Low Brown</option>
                 <option value="hibrown">High Brown</option>
-                <option value="black">Black Recommended</option>
-                <option value="black1">Black 1</option>
-                <option value="black2">Black 2</option>
-                <option value="black3">Black 3</option>
-                <option value="black4">Black 4</option>
-                <option value="black5">Black 5</option>
-                <option value="black6">Black 6</option>
+                <option value="black">Black - Recommended</option>
+                <option value="black1">Black - 1st Degree</option>
+                <option value="black2">Black - 2nd Degree</option>
+                <option value="black3">Black - 3rd Degree</option>
+                <option value="black4">Black - 4th Degree</option>
+                <option value="black5">Black - 5th Degree</option>
+                <option value="black6">Black - 6th Degree</option>
               </select>
               <div className="flex items-center justify-center w-full mt-8">
                 {!passwordMatch || !allFieldsFilled ? (
