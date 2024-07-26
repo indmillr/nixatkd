@@ -119,28 +119,36 @@ const UserCard = ({
         <FaWrench className="absolute top-3 right-5 text-primary text-2xl" />
       )}
       {isEditing ? (
-        <div className="flex flex-col min-w-full">
-          <p className="mb-2 mt-2 text-left text-sm font-semibold">
-            First Name
-          </p>
-          <input
-            className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            placeholder="First Name"
-          />
-          <p className="mb-2 mt-4 text-left text-sm font-semibold">Last Name</p>
-          <input
-            className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            placeholder="Last Name"
-          />
+        <div className="flex flex-col min-w-full mb-4">
+          <div className="flex gap-x-2">
+            <div>
+              <p className="mb-2 mt-2 text-left text-sm font-semibold">
+                First Name
+              </p>
+              <input
+                className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First Name"
+              />
+            </div>
+            <div>
+              <p className="mb-2 mt-2 text-left text-sm font-semibold">
+                Last Name
+              </p>
+              <input
+                className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Last Name"
+              />
+            </div>
+          </div>
           <p className="mb-2 mt-4 text-left text-sm font-semibold">Email</p>
           <input
-            className="mb-2 p-2 border rounded w-full"
+            className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -148,32 +156,42 @@ const UserCard = ({
           />
           <p className="mb-2 mt-4 text-left text-sm font-semibold">Username</p>
           <input
-            className="mb-2 p-2 border rounded w-full"
+            className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
           />
-          <p className="mb-2 mt-4 text-left text-sm font-semibold">Belt Rank</p>
-          <select
-            className="mb-2 p-2 border rounded w-full"
-            value={selectedRole}
-            onChange={handleRoleChange}
-          >
-            {rolesOrder.map((role) => (
-              <option key={role} value={role}>
-                {role}
-              </option>
-            ))}
-          </select>
-          <div className="flex items-center mb-10 mt-4 gap-x-1">
-            <input
-              type="checkbox"
-              checked={isAdmin}
-              onChange={handleAdminChange}
-              className="mr-2 form-checkbox h-6 w-6 text-primary"
-            />
-            <label className="text-base font-semibold h-4 w-4">Admin?</label>
+          <div className="flex gap-x-2 mb-4">
+            <div className="w-[60%] mb-6">
+              <p className="mb-2 mt-4 text-left text-sm font-semibold">
+                Belt Rank
+              </p>
+              <select
+                className="w-full p-2 text-dark dark:border dark:border-gray-600 dark:text-light bg-light dark:bg-dark rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:bg-lighter dark:focus:bg-dark"
+                value={selectedRole}
+                onChange={handleRoleChange}
+              >
+                {rolesOrder.map((role) => (
+                  <option key={role} value={role}>
+                    {role}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-center justify-center w-[40%]">
+              <div className="flex items-center gap-x-1">
+                <input
+                  type="checkbox"
+                  checked={isAdmin}
+                  onChange={handleAdminChange}
+                  className="mr-2 form-checkbox h-6 w-6 text-primary"
+                />
+                <label className="text-base font-semibold h-4 w-4">
+                  Admin?
+                </label>
+              </div>
+            </div>
           </div>
           <div className="flex flex-col gap-y-2 w-full">
             {loading ? (
@@ -220,13 +238,15 @@ const UserCard = ({
                   </div>
                 </div>
               ) : (
-                <button
-                  onClick={toggleDeleteConfirm}
-                  className="border border-gray-500 px-4 py-2 rounded-lg hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-base items-center font-semibold flex justify-center"
-                >
-                  <MdDelete className="text-2xl mr-3" />
-                  Delete User
-                </button>
+                <div className="flex w-full items-center justify-between">
+                  <button
+                    onClick={toggleDeleteConfirm}
+                    className="border border-gray-500 px-4 py-2 rounded-lg mr-2 transition-all duration-300 bg-secondary text-lighter dark:text-darker hover:brightness-125 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
+                  >
+                    <MdDelete className="text-2xl mr-3" />
+                    Delete
+                  </button>
+                </div>
               )}
               <button
                 onClick={onCancelEdit}
