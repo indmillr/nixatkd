@@ -58,7 +58,7 @@ const Admin = () => {
   };
 
   return (
-    <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
+    <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark pb-5">
       <div className="text-center flex flex-col justify-center h-full mx-auto">
         <h1 className="text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-6 font-semibold">
           Admin <span className="text-secondary dark:text-primary">Tools</span>.

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { Spinner } from "@material-tailwind/react";
 import { LuBadgeAlert } from "react-icons/lu";
+import { rolesOrder } from "../../../lib/data";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -11,12 +12,12 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState(""); // State for re-entered password
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
   const [loading, setLoading] = useState(false);
-  const [passwordMatch, setPasswordMatch] = useState(true); // State to check password match
-  const [allFieldsFilled, setAllFieldsFilled] = useState(false); // State to check if all fields are filled
-  const [error, setError] = useState(""); // State to store error message
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+  const [error, setError] = useState("");
   const { signIn } = useAuth();
 
   useEffect(() => {
@@ -42,10 +43,18 @@ const Signup = () => {
     setError("");
   };
 
+  const getPrecedingRoles = (selectedRole) => {
+    const index = rolesOrder.indexOf(selectedRole);
+    if (index === -1) return [];
+    return rolesOrder.slice(0, index + 1);
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    const rolesToAdd = getPrecedingRoles(role);
 
     try {
       const response = await fetch("/api/register", {
@@ -59,7 +68,7 @@ const Signup = () => {
           email,
           username,
           password,
-          role,
+          roles: rolesToAdd,
         }),
       });
 
@@ -71,7 +80,7 @@ const Signup = () => {
       }
 
       const data = await response.json();
-      signIn(data.token, data.user); // Use the signIn function from the Auth Context
+      signIn(data.token, data.user);
     } catch (error) {
       console.error("Registration error:", error);
       setError("An unexpected error occurred. Please try again.");
@@ -205,25 +214,11 @@ const Signup = () => {
                 <option disabled value="">
                   Select Belt Rank
                 </option>
-                <option value="white">White</option>
-                <option value="loyellow">Low Yellow</option>
-                <option value="hiyellow">High Yellow</option>
-                <option value="logreen">Low Green</option>
-                <option value="higreen">High Green</option>
-                <option value="loblue">Low Blue</option>
-                <option value="hiblue">High Blue</option>
-                <option value="purple">Purple</option>
-                <option value="lored">Low Red</option>
-                <option value="hired">High Red</option>
-                <option value="lobrown">Low Brown</option>
-                <option value="hibrown">High Brown</option>
-                <option value="black">Black - Recommended</option>
-                <option value="black1">Black - 1st Degree</option>
-                <option value="black2">Black - 2nd Degree</option>
-                <option value="black3">Black - 3rd Degree</option>
-                <option value="black4">Black - 4th Degree</option>
-                <option value="black5">Black - 5th Degree</option>
-                <option value="black6">Black - 6th Degree</option>
+                {rolesOrder.map((role, index) => (
+                  <option key={index} value={role}>
+                    {role}
+                  </option>
+                ))}
               </select>
               <div className="flex items-center justify-center w-full mt-8">
                 {!passwordMatch || !allFieldsFilled ? (

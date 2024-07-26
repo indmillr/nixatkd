@@ -14,13 +14,12 @@ export default async function handler(req, res) {
     return res.status(405).end(); // Method Not Allowed
   }
 
-  const { firstName, lastName, email, username, password, role } = req.body;
+  const { firstName, lastName, email, username, password, roles } = req.body;
 
   try {
     await dbConnect();
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const rolesToAdd = getPrecedingRoles(role);
 
     const user = await User.create({
       firstName,
@@ -28,7 +27,7 @@ export default async function handler(req, res) {
       email,
       username,
       password: hashedPassword,
-      roles: rolesToAdd,
+      roles,
     });
 
     res.status(201).json({
@@ -36,7 +35,7 @@ export default async function handler(req, res) {
         firstName: user.firstName,
         lastName: user.lastName,
         username: user.username,
-        roles: rolesToAdd,
+        roles,
       },
     });
   } catch (error) {
