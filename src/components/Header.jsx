@@ -102,7 +102,7 @@ export default function Header() {
                       onClick={toggleProfile}
                     />
                     <div className="text-base pb-2 mb-2 text-secondary dark:text-primary mb-2 font-semibold tracking-wider border-b border-gray-500">
-                      Hi {user.firstName}!
+                      Hi, {user.firstName}!
                     </div>
                     <div className="flex flex-col justify-between">
                       <Link
@@ -127,10 +127,7 @@ export default function Header() {
                           </div>
                         </Link>
                       ) : (
-                        <div className="flex gap-x-3 mt-4 items-center dark:text-gray-500 text-gray-300">
-                          <FaWrench />
-                          <span className="capitalize">Admin</span>
-                        </div>
+                        <></>
                       )}
                     </div>
                     <button
