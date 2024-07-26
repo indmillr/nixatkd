@@ -114,7 +114,7 @@ const UserCard = ({
   }
 
   return (
-    <div className="relative bg-white dark:bg-black p-4 w-full rounded-xl shadow-md hover:shadow-lg">
+    <div className="relative mb-4 bg-white dark:bg-black p-4 w-full rounded-xl shadow-md hover:shadow-lg">
       {user.roles.includes("admin") && (
         <FaWrench className="absolute top-3 right-5 text-primary text-2xl" />
       )}
