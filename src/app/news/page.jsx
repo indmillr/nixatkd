@@ -38,7 +38,7 @@ const News = () => {
       author: `${user.firstName} ${user.lastName}`,
     };
 
-    console.log("Adding news item:", newNewsItem);
+    // console.log("Adding news item:", newNewsItem);
 
     try {
       setLoading(true);
@@ -75,13 +75,18 @@ const News = () => {
   const handleSaveEdit = async (e) => {
     e.preventDefault();
 
+    if (editIndex === null || newsItems[editIndex] === undefined) {
+      console.error("Invalid editIndex or news item is undefined");
+      return;
+    }
+
     const updatedNewsItem = {
       title,
       content,
       author: newsItems[editIndex].author,
     };
 
-    console.log("Updating news item:", updatedNewsItem);
+    // console.log("Updating news item:", updatedNewsItem);
 
     try {
       setLoading(true);
@@ -99,6 +104,7 @@ const News = () => {
         updatedNewsItems[editIndex] = updatedItem;
         setNewsItems(updatedNewsItems);
         setIsEditing(false);
+        setEditIndex(null); // Reset the editIndex after editing
       } else {
         console.error("Failed to update news item");
       }
@@ -115,8 +121,8 @@ const News = () => {
       return;
     }
 
-    console.log("Deleting news item with index:", editIndex);
-    console.log("News item to delete:", newsItems[editIndex]);
+    // console.log("Deleting news item with index:", editIndex);
+    // console.log("News item to delete:", newsItems[editIndex]);
 
     try {
       setLoading(true);
@@ -154,27 +160,33 @@ const News = () => {
 
   return (
     <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
-      <div className="text-center flex flex-col justify-center h-full mx-auto">
+      <div className="text-center flex flex-col justify-center h-full mx-auto w-full">
         <h1 className="text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-6 font-semibold">
           NTA <span className="text-secondary dark:text-primary">News</span>.
         </h1>
 
-        <p className="max-w-sm text-lg mx-auto font-semibold mb-2">
-          Check here for updates
-          <br />
-          about upcoming NTA events.
-        </p>
-
-        {user && user.roles.includes("admin") && (
-          <MdAddCircleOutline
-            className="text-4xl cursor-pointer absolute top-16 right-8 text-primary hover:brightness-110"
-            onClick={() => {
-              setIsEditing(true);
-              setEditIndex(null);
-              setTitle("");
-              setContent("");
-            }}
-          />
+        {user && user.roles.includes("admin") ? (
+          <div className="flex items-center justify-center w-full">
+            <button
+              type="submit"
+              className="border border-gray-500 flex px-2 py-1 rounded-lg items-center justify-center shadow-sm shadow-secondary dark:shadow-primary hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none font-semibold text-lg gap-x-3 w-fit"
+              onClick={() => {
+                setIsEditing(true);
+                setEditIndex(null);
+                setTitle("");
+                setContent("");
+              }}
+            >
+              <MdAddCircleOutline className="text-2xl" />
+              Add News
+            </button>{" "}
+          </div>
+        ) : (
+          <p className="max-w-sm text-lg mx-auto font-semibold mb-2">
+            Check here for updates
+            <br />
+            about upcoming NTA events.
+          </p>
         )}
 
         {isEditing ? (
@@ -253,36 +265,32 @@ const News = () => {
                       </div>
                     </div>
                   ) : (
-                    <button
-                      onClick={toggleDeleteConfirm}
-                      className="border border-gray-500 px-4 py-2 rounded-lg hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-base items-center font-semibold flex justify-center"
-                    >
-                      <MdDelete className="text-2xl mr-3" />
-                      Delete News Item
-                    </button>
+                    <></>
                   )}
-                  <button
-                    onClick={onCancelEdit}
-                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
-                  >
-                    <MdClose className="text-2xl mr-3" />
-                    Cancel
-                  </button>
+                  <div className="flex w-full items-center justify-end">
+                    <button
+                      onClick={onCancelEdit}
+                      className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
+                    >
+                      <MdClose className="text-2xl mr-3 self-end" />
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 w-full">
             {newsItems.map((item, index) => {
               const date = new Date(item.date);
               const dayOfWeek = date.toLocaleDateString("en-US", {
                 weekday: "short",
               });
               const formattedDate = date.toLocaleDateString("en-US", {
-                month: "short",
+                month: "numeric",
                 day: "numeric",
-                year: "numeric",
+                year: "2-digit",
               });
               const formattedTime = date.toLocaleTimeString("en-US", {
                 hour: "2-digit",
@@ -296,9 +304,13 @@ const News = () => {
                   className="relative bg-white dark:bg-black p-4 rounded-xl w-full shadow-md mb-4"
                 >
                   {user && user.roles.includes("admin") && (
-                    <div className="absolute top-2 right-2 flex gap-2">
+                    <div className="absolute w-full -top-3 right-0 flex items-center justify-between">
+                      <MdDelete
+                        className="text-2xl cursor-pointer text-red-500 hover:text-red-700"
+                        onClick={() => toggleDeleteConfirm(index)}
+                      />
                       <MdEdit
-                        className="text-xl cursor-pointer text-secondary hover:text-secondary-dark"
+                        className="text-2xl cursor-pointer text-secondary hover:text-secondary-dark"
                         onClick={() => handleEditNews(index)}
                       />
                     </div>
@@ -307,12 +319,12 @@ const News = () => {
                     {item.title}
                   </h2>
                   <p className="text-base text-left">{item.content}</p>
-                  <div className="flex w-full items-center justify-between border-t border-gray-500 mt-2">
-                    <p className="pt-2 text-left text-xs dark:text-secondary text-primary">
+                  <div className="flex w-full items-center justify-between border-t border-gray-500 mt-4">
+                    <p className="pt-2 text-left text-sm dark:text-secondary text-primary">
                       {item.author}
                     </p>
-                    <p className="pt-2 text-right text-xs dark:text-secondary text-primary">
-                      {dayOfWeek}, {formattedDate} at {formattedTime}
+                    <p className="pt-2 text-right text-sm dark:text-secondary text-primary">
+                      {formattedDate} @ {formattedTime}
                     </p>
                   </div>
                 </div>
