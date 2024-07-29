@@ -33,10 +33,10 @@ const News = () => {
     const newNewsItem = {
       title,
       content,
-      author: `${user.firstName} ${user.lastName}`, // Construct the author's full name
+      author: `${user.firstName} ${user.lastName}`,
     };
 
-    console.log("Adding news item:", newNewsItem); // Debugging line
+    console.log("Adding news item:", newNewsItem);
 
     try {
       const response = await fetch("/api/news", {
@@ -73,10 +73,10 @@ const News = () => {
     const updatedNewsItem = {
       title,
       content,
-      author: newsItems[editIndex].author, // Keep the original author
+      author: newsItems[editIndex].author,
     };
 
-    console.log("Updating news item:", updatedNewsItem); // Debugging line
+    // console.log("Updating news item:", updatedNewsItem);
 
     try {
       const response = await fetch(`/api/news/${newsItems[editIndex]._id}`, {

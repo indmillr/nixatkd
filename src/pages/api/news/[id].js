@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   const { method, body, query } = req;
   const { id } = query;
 
-  console.log("Request body:", body); // Debugging line
+  // console.log("Request body:", body);
 
   try {
     if (method === "PUT") {
@@ -22,18 +22,18 @@ export default async function handler(req, res) {
       if (updatedNewsItem) {
         res.status(200).json(updatedNewsItem);
       } else {
-        res.status(404).json({ message: "News item not found" });
+        res.status(404).json({ message: "News item not found!" });
       }
     } else if (method === "DELETE") {
       const deletedNewsItem = await News.findByIdAndDelete(id);
 
       if (deletedNewsItem) {
-        res.status(200).json({ message: "News item deleted" });
+        res.status(200).json({ message: "News item deleted!" });
       } else {
-        res.status(404).json({ message: "News item not found" });
+        res.status(404).json({ message: "News item not found!" });
       }
     } else {
-      res.status(405).json({ message: "Method not allowed" });
+      res.status(405).json({ message: "Method not allowed!" });
     }
   } catch (error) {
     console.error("Error processing request:", error);

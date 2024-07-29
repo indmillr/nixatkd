@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   const { method, body } = req;
 
-  console.log("Request body:", body); // Debugging line
+  // console.log("Request body:", body);
 
   try {
     if (method === "GET") {
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       await newNewsItem.save();
       res.status(201).json(newNewsItem);
     } else {
-      res.status(405).json({ message: "Method not allowed" });
+      res.status(405).json({ message: "Method not allowed!" });
     }
   } catch (error) {
     console.error("Error processing request:", error);
