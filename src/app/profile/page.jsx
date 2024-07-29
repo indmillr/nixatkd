@@ -5,18 +5,27 @@ import { useAuth } from "@/context/AuthContext";
 import { Spinner } from "@material-tailwind/react";
 import { LuBadgeAlert } from "react-icons/lu";
 
-const Profile = () => {
+const Settings = () => {
   const { user } = useAuth();
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [email, setEmail] = useState(user.email);
-  const [username, setUsername] = useState(user.username);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setFirstName(user.firstName || "");
+      setLastName(user.lastName || "");
+      setEmail(user.email || "");
+      setUsername(user.username || "");
+    }
+  }, [user]);
 
   useEffect(() => {
     setPasswordMatch(newPassword === confirmNewPassword);
@@ -71,7 +80,7 @@ const Profile = () => {
     }
   };
 
-  return (
+  return user ? (
     <div className="w-full min-h-full flex flex-col justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
       <div className="text-center flex flex-col w-[90%] justify-center h-full mx-auto">
         <h1 className="text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-6 font-semibold">
@@ -222,7 +231,11 @@ const Profile = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <div className="w-full min-h-full flex items-center justify-center pt-[10px] px-5 bg-lighter dark:bg-dark">
+      <Spinner className="h-12 w-12 text-primary" />
+    </div>
   );
 };
 
-export default Profile;
+export default Settings;
