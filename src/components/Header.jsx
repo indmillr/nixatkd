@@ -105,16 +105,17 @@ export default function Header() {
                       Hi, {user.firstName}!
                     </div>
                     <div className="flex flex-col justify-between">
-                      <Link
-                        // href="/" TODO: add profile page?
+                      {/* <Link
+                        
+                        href="/" // TODO: add profile page?
                         className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                         onClick={() => setIsProfileOpen(false)}
-                      >
-                        <div className="flex gap-x-3 mt-2 items-center">
-                          <MdOutlineSettings />
-                          <span className="capitalize">Profile</span>
-                        </div>{" "}
-                      </Link>
+                      > */}
+                      <div className="flex gap-x-3 text-gray-500 mt-2 items-center">
+                        <MdOutlineSettings />
+                        <span className="capitalize">Profile</span>
+                      </div>{" "}
+                      {/* </Link> */}
                       {user.roles.includes("admin") ? (
                         <Link
                           href="/admin"

@@ -25,7 +25,7 @@ const FormsSlider = () => {
     return user.roles.includes(formRole);
   };
 
-  console.log("User roles: ", user.roles);
+  // console.log("User roles: ", user.roles);
 
   // Filter the forms data based on user roles
   const filteredFormsData = formsData.filter((form) =>

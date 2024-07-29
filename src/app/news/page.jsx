@@ -13,7 +13,7 @@ const News = () => {
   const [editIndex, setEditIndex] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Initially set loading to true
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -23,6 +23,8 @@ const News = () => {
         setNewsItems(data.reverse()); // Reverse the order of news items
       } catch (error) {
         console.error("Error fetching news:", error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
       }
     };
 
@@ -37,8 +39,6 @@ const News = () => {
       content,
       author: `${user.firstName} ${user.lastName}`,
     };
-
-    // console.log("Adding news item:", newNewsItem);
 
     try {
       setLoading(true);
@@ -86,8 +86,6 @@ const News = () => {
       author: newsItems[editIndex].author,
     };
 
-    // console.log("Updating news item:", updatedNewsItem);
-
     try {
       setLoading(true);
       const response = await fetch(`/api/news/${newsItems[editIndex]._id}`, {
@@ -120,9 +118,6 @@ const News = () => {
       console.error("Invalid editIndex or news item is undefined");
       return;
     }
-
-    // console.log("Deleting news item with index:", editIndex);
-    // console.log("News item to delete:", newsItems[editIndex]);
 
     try {
       setLoading(true);
@@ -189,7 +184,11 @@ const News = () => {
           </p>
         )}
 
-        {isEditing ? (
+        {loading ? (
+          <div className="flex justify-center items-center w-full">
+            <Spinner className="h-12 w-12" color="blue" />
+          </div>
+        ) : isEditing ? (
           <div className="absolute top-16 right-5 bg-white dark:bg-black p-6 rounded-xl shadow-md z-50 w-[90%] flex flex-col mx-auto">
             <h2 className="text-lg font-semibold mb-4">
               {editIndex === null ? "Add News Item" : "Edit News Item"}
