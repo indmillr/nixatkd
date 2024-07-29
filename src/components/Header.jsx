@@ -106,7 +106,7 @@ export default function Header() {
                     </div>
                     <div className="flex flex-col justify-between">
                       <Link
-                        href="/profile"
+                        // href="/" TODO: add profile page?
                         className="flex relative group hover:text-primary transition-all duration-300 ease-in-out dark:hover:text-secondary  focus:text-secondary dark:focus:text-primary"
                         onClick={() => setIsProfileOpen(false)}
                       >
