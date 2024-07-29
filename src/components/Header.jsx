@@ -149,7 +149,7 @@ export default function Header() {
           </Link>
         )}
         <MdOutlineMenu
-          className="text-3xl m-1 cursor-pointer"
+          className="text-3xl m-1 mr-3 cursor-pointer "
           onClick={toggleMenu}
         />
         {isMenuOpen && (
@@ -160,7 +160,7 @@ export default function Header() {
             >
               <div className="flex flex-col justify-between">
                 <MdClose
-                  className="fixed top-3 right-3 text-3xl cursor-pointer"
+                  className="fixed top-3 right-3 text-3xl cursor-pointer mr-3"
                   onClick={toggleMenu}
                 />
                 {navData.map((link, index) => (
