@@ -67,7 +67,7 @@ export default function Header() {
 
   return (
     <div className="fixed shadow-sm bg-white dark:bg-black top-0 z-50 w-full flex items-center justify-between h-[50px] p-3">
-      <div className="flex flex-row -ml-3">
+      <div className="flex flex-row items-center">
         <Link href="/">
           <Image
             src="/img/NTALOGO.png"
@@ -78,7 +78,7 @@ export default function Header() {
             className="cursor-pointer"
           ></Image>
         </Link>
-        <div className="-ml-2 mt-1 text-left uppercase font-bold tracking-widest text-xs">
+        <div className="-ml-2 text-left uppercase font-bold tracking-widest text-xs">
           <p>Nixa TaeKwon-Do</p>
           <p>Academy</p>
         </div>
@@ -149,7 +149,7 @@ export default function Header() {
           </Link>
         )}
         <MdOutlineMenu
-          className="text-3xl m-1 mr-3 cursor-pointer "
+          className="text-3xl m-1 cursor-pointer "
           onClick={toggleMenu}
         />
         {isMenuOpen && (
@@ -160,7 +160,7 @@ export default function Header() {
             >
               <div className="flex flex-col justify-between">
                 <MdClose
-                  className="fixed top-3 right-3 text-3xl cursor-pointer mr-3"
+                  className="fixed top-3 right-3 text-3xl cursor-pointer"
                   onClick={toggleMenu}
                 />
                 {navData.map((link, index) => (
