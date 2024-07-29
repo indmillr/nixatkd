@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { MdAddCircleOutline, MdEdit, MdDelete } from "react-icons/md";
+import { MdAddCircleOutline, MdEdit, MdDelete, MdClose } from "react-icons/md";
+import { Spinner } from "@material-tailwind/react";
 
 const News = () => {
   const { user } = useAuth();
@@ -12,13 +13,14 @@ const News = () => {
   const [editIndex, setEditIndex] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response = await fetch("/api/news");
         const data = await response.json();
-        setNewsItems(data);
+        setNewsItems(data.reverse()); // Reverse the order of news items
       } catch (error) {
         console.error("Error fetching news:", error);
       }
@@ -39,6 +41,7 @@ const News = () => {
     console.log("Adding news item:", newNewsItem);
 
     try {
+      setLoading(true);
       const response = await fetch("/api/news", {
         method: "POST",
         headers: {
@@ -49,13 +52,15 @@ const News = () => {
 
       if (response.ok) {
         const addedNewsItem = await response.json();
-        setNewsItems([...newsItems, addedNewsItem]);
+        setNewsItems([addedNewsItem, ...newsItems]);
         setIsEditing(false);
       } else {
         console.error("Failed to add news item");
       }
     } catch (error) {
       console.error("Error adding news item:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,9 +81,10 @@ const News = () => {
       author: newsItems[editIndex].author,
     };
 
-    // console.log("Updating news item:", updatedNewsItem);
+    console.log("Updating news item:", updatedNewsItem);
 
     try {
+      setLoading(true);
       const response = await fetch(`/api/news/${newsItems[editIndex]._id}`, {
         method: "PUT",
         headers: {
@@ -98,12 +104,23 @@ const News = () => {
       }
     } catch (error) {
       console.error("Error updating news item:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleDeleteNews = async (index) => {
+  const handleDeleteNews = async () => {
+    if (editIndex === null || newsItems[editIndex] === undefined) {
+      console.error("Invalid editIndex or news item is undefined");
+      return;
+    }
+
+    console.log("Deleting news item with index:", editIndex);
+    console.log("News item to delete:", newsItems[editIndex]);
+
     try {
-      const response = await fetch(`/api/news/${newsItems[index]._id}`, {
+      setLoading(true);
+      const response = await fetch(`/api/news/${newsItems[editIndex]._id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -111,20 +128,28 @@ const News = () => {
       });
 
       if (response.ok) {
-        const updatedNewsItems = newsItems.filter((_, i) => i !== index);
+        const updatedNewsItems = newsItems.filter((_, i) => i !== editIndex);
         setNewsItems(updatedNewsItems);
         setShowDeleteConfirm(false);
+        setEditIndex(null); // Reset the editIndex after deletion
       } else {
         console.error("Failed to delete news item");
       }
     } catch (error) {
       console.error("Error deleting news item:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const toggleDeleteConfirm = (index) => {
     setShowDeleteConfirm(!showDeleteConfirm);
     setEditIndex(index);
+  };
+
+  const onCancelEdit = () => {
+    setIsEditing(false);
+    setEditIndex(null);
   };
 
   return (
@@ -183,20 +208,67 @@ const News = () => {
                   required
                 />
               </div>
-              <div className="flex justify-end gap-4">
-                <button
-                  type="submit"
-                  className="bg-secondary text-white px-4 py-2 rounded-lg shadow-md hover:bg-secondary-dark"
-                >
-                  {editIndex === null ? "Submit" : "Save"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsEditing(false)}
-                  className="border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 px-4 py-2 rounded-lg"
-                >
-                  Cancel
-                </button>
+              <div className="flex flex-col gap-y-2 w-full">
+                {loading ? (
+                  <button
+                    type="button"
+                    disabled
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl justify-center font-semibold flex items-center"
+                  >
+                    <Spinner className="h-4 w-4 dark:text-primary text-secondary font-bold mr-3" />{" "}
+                    Loading...
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-md shadow-secondary dark:shadow-primary hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
+                  >
+                    SAVE
+                  </button>
+                )}
+                <div className="flex gap-x-5 mt-10">
+                  {showDeleteConfirm ? (
+                    <div className="w-[100vw] h-[100vh] z-50 flex justify-center items-center top-0 right-0 fixed backdrop-filter backdrop-blur(10px) bg-opacity-75 bg-black dark:bg-white dark:bg-opacity-30">
+                      <div className="bg-white dark:bg-black shadow-md z-50 flex justify-center pb-3 my-0 flex-col text-2xl rounded-xl p-10">
+                        <p className="mb-2 text-xl font-semibold">
+                          Delete this news item?
+                        </p>
+                        <p className="text-lg mb-4 text-secondary">
+                          This action cannot be reversed.
+                        </p>
+                        <div className="flex gap-x-4 pb-8 w-full items-center justify-center">
+                          <button
+                            onClick={handleDeleteNews}
+                            className="border border-gray-500 px-4 py-2 rounded-lg mr-2 transition-all duration-300 bg-secondary text-lighter dark:text-darker hover:brightness-125 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
+                          >
+                            Confirm
+                          </button>
+                          <button
+                            onClick={toggleDeleteConfirm}
+                            className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary mr-2 hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={toggleDeleteConfirm}
+                      className="border border-gray-500 px-4 py-2 rounded-lg hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-base items-center font-semibold flex justify-center"
+                    >
+                      <MdDelete className="text-2xl mr-3" />
+                      Delete News Item
+                    </button>
+                  )}
+                  <button
+                    onClick={onCancelEdit}
+                    className="border border-gray-500 px-4 py-2 rounded-lg shadow-sm shadow-secondary dark:shadow-primary hover:text-secondary dark:hover:text-primary transition-all duration-300 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
+                  >
+                    <MdClose className="text-2xl mr-3" />
+                    Cancel
+                  </button>
+                </div>
               </div>
             </form>
           </div>
@@ -228,10 +300,6 @@ const News = () => {
                       <MdEdit
                         className="text-xl cursor-pointer text-secondary hover:text-secondary-dark"
                         onClick={() => handleEditNews(index)}
-                      />
-                      <MdDelete
-                        className="text-xl cursor-pointer text-red-500 hover:text-red-700"
-                        onClick={() => toggleDeleteConfirm(index)}
                       />
                     </div>
                   )}
@@ -265,7 +333,7 @@ const News = () => {
             </p>
             <div className="flex gap-x-4 pb-8 w-full items-center justify-center">
               <button
-                onClick={() => handleDeleteNews(editIndex)}
+                onClick={handleDeleteNews}
                 className="border border-gray-500 px-4 py-2 rounded-lg mr-2 transition-all duration-300 bg-secondary text-lighter dark:text-darker hover:brightness-125 ease-in-out hover:shadow-none text-xl items-center font-semibold flex justify-center"
               >
                 Confirm
